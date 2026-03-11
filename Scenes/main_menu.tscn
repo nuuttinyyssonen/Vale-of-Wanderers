@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cn0j5hwe8oj1w"]
 
-[ext_resource type="Texture2D" uid="uid://ssbar73ejqiu" path="res://background.PNG" id="1_7vrkn"]
-[ext_resource type="Script" uid="uid://cborkl0idtydp" path="res://main_menu.gd" id="1_fu7sn"]
-[ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://GrapeSoda.ttf" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://cborkl0idtydp" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://ssbar73ejqiu" path="res://Assets/background.PNG" id="2_ce3w2"]
+[ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="3_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
-texture = ExtResource("1_7vrkn")
+texture = ExtResource("2_ce3w2")
 modulate_color = Color(0.42365083, 0.4236506, 0.42365062, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fu7sn")
+script = ExtResource("1_1ehe0")
 
 [node name="Panel" type="Panel" parent="." unique_id=1541376987]
 layout_mode = 1
@@ -89,7 +89,7 @@ offset_right = 71.0
 offset_bottom = 174.0
 grow_horizontal = 2
 theme_override_constants/shadow_offset_y = 16
-theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_fonts/font = ExtResource("3_n45e2")
 theme_override_font_sizes/font_size = 80
 text = "Vale of Wanderers"
 
