@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Vale of Wanderers"
-run/main_scene="uid://mjdc2ylbxygv"
+run/main_scene="uid://cn0j5hwe8oj1w"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [input]
