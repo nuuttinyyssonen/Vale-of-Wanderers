@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://Scenes/Door.tscn" id="2_qwv7y"]
 [ext_resource type="Texture2D" uid="uid://dar6s7xq4xr0k" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/wall-tiles-32x32.png" id="3_2ngrw"]
 [ext_resource type="Texture2D" uid="uid://8w6yyk168jm5" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/assets-all.png" id="4_2ngrw"]
+[ext_resource type="PackedScene" uid="uid://bwx6f3sylwgyl" path="res://Scenes/Enemy.tscn" id="5_yw2ac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yw2ac"]
 texture = ExtResource("2_ofyxu")
@@ -482,6 +483,47 @@ size = Vector2(30, 17.5)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ngrw"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yw2ac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsklp"]
+size = Vector2(36, 177.25)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ri4iq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4f15"]
+size = Vector2(1083, 32)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q6vw4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4rbn"]
+size = Vector2(1043.5, 31.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hyb0"]
+size = Vector2(31, 608)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u4g21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8i7m"]
+size = Vector2(38, 637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri4iq"]
+size = Vector2(33, 257)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6vw4"]
+size = Vector2(34, 271)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4g21"]
+size = Vector2(269, 31.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8eatj"]
+size = Vector2(221, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi23t"]
+size = Vector2(269, 32.3125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6dm6"]
+size = Vector2(34, 79.625)
+
 [node name="Cave" type="Node2D" unique_id=670159003]
 script = ExtResource("1_gc3nt")
 
@@ -511,6 +553,9 @@ texture = ExtResource("4_2ngrw")
 region_enabled = true
 region_rect = Rect2(38.331726, 324.9501, 79.02634, 53.23178)
 
+[node name="Enemy" parent="." unique_id=85219188 instance=ExtResource("5_yw2ac")]
+position = Vector2(268, 174)
+
 [node name="Player" parent="." unique_id=1385586740 instance=ExtResource("1_fvrk5")]
 position = Vector2(561, 360)
 
@@ -539,6 +584,86 @@ position = Vector2(3.25, -1)
 
 [node name="Spawn" parent="Node2/level_2_entrance" index="1" unique_id=1987287655]
 position = Vector2(1, 40)
+
+[node name="WallTop2" type="StaticBody2D" parent="." unique_id=226915272]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop2" unique_id=1237746803]
+position = Vector2(127, 521.25)
+shape = SubResource("RectangleShape2D_gsklp")
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=407172492]
+position = Vector2(-35.5, -277)
+physics_material_override = SubResource("PhysicsMaterial_ri4iq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1169271075]
+position = Vector2(613, 294)
+shape = SubResource("RectangleShape2D_v4f15")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=1552059917]
+position = Vector2(-12, 308)
+physics_material_override = SubResource("PhysicsMaterial_q6vw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=423047745]
+position = Vector2(641.25, 315.75)
+shape = SubResource("RectangleShape2D_q4rbn")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1650793964]
+position = Vector2(511, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1992607117]
+position = Vector2(624.5, 316)
+shape = SubResource("RectangleShape2D_5hyb0")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1387081315]
+position = Vector2(-586, 9)
+physics_material_override = SubResource("PhysicsMaterial_u4g21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=605682670]
+position = Vector2(603, 310)
+shape = SubResource("RectangleShape2D_w8i7m")
+
+[node name="WallTop3" type="StaticBody2D" parent="." unique_id=1922359871]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop3" unique_id=625643500]
+position = Vector2(384.5, 335.5)
+shape = SubResource("RectangleShape2D_ri4iq")
+
+[node name="WallTop4" type="StaticBody2D" parent="." unique_id=309357613]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop4" unique_id=558116688]
+position = Vector2(689, 344.5)
+shape = SubResource("RectangleShape2D_q6vw4")
+
+[node name="WallTop5" type="StaticBody2D" parent="." unique_id=1449288709]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop5" unique_id=1268578828]
+position = Vector2(535.5, 224)
+shape = SubResource("RectangleShape2D_u4g21")
+
+[node name="WallTop6" type="StaticBody2D" parent="." unique_id=1768111785]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop6" unique_id=523461626]
+position = Vector2(256.5, 448)
+shape = SubResource("RectangleShape2D_8eatj")
+
+[node name="WallTop7" type="StaticBody2D" parent="." unique_id=1324214469]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop7" unique_id=1865014507]
+position = Vector2(840.5, 463.84375)
+shape = SubResource("RectangleShape2D_bi23t")
+
+[node name="WallTop8" type="StaticBody2D" parent="." unique_id=904922512]
+physics_material_override = SubResource("PhysicsMaterial_yw2ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop8" unique_id=1328307652]
+position = Vector2(992, 487.8125)
+shape = SubResource("RectangleShape2D_x6dm6")
 
 [editable path="Node/start_entrance"]
 [editable path="Node2/level_2_entrance"]

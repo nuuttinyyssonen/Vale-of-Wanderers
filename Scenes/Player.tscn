@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://l6ai3d0fpv4d"]
 
-[ext_resource type="Script" uid="uid://drphiodrkum32" path="res://Scripts/character_body_2d.gd" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://drphiodrkum32" path="res://Scripts/Player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://5ohdl7odcsnr" path="res://Cute_Fantasy_Free/Player/Player.png" id="2_gntrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
@@ -423,6 +423,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
 size = Vector2(25, 11)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
+size = Vector2(107, 111)
+
 [node name="Player" type="Node2D" unique_id=1385586740 groups=["player"]]
 position = Vector2(699, 341)
 
@@ -439,3 +442,12 @@ animation = &"attack_up"
 [node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1376407940]
 position = Vector2(4, 10.5)
 shape = SubResource("RectangleShape2D_5ixxa")
+
+[node name="AttackArea" type="Area2D" parent="CharacterBody2D" unique_id=90067628]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea" unique_id=706650788]
+position = Vector2(13.5, -5.5)
+shape = SubResource("RectangleShape2D_kyqiw")
+
+[connection signal="body_entered" from="CharacterBody2D/AttackArea" to="CharacterBody2D" method="_on_attack_area_body_entered"]

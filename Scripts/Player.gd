@@ -3,10 +3,13 @@ extends CharacterBody2D
 class_name Player
 
 @onready var anim = $AnimatedSprite2D
+@onready var attack_area = $AttackArea
 
 var speed = 400
 var last_direction = Vector2.DOWN
 var is_attacking = false
+var max_health := 5
+var health := 5
 
 func _ready():
 	anim.animation_finished.connect(_on_animation_finished)
@@ -67,6 +70,7 @@ func start_attack():
 		return
 
 	is_attacking = true
+	attack_area.monitoring = true
 	velocity = Vector2.ZERO
 
 	if last_direction == Vector2.RIGHT:
@@ -83,3 +87,20 @@ func start_attack():
 func _on_animation_finished():
 	if anim.animation == "attack_side" or anim.animation == "attack_down" or anim.animation == "attack_up":
 		is_attacking = false
+		attack_area.monitoring = false
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	print("Player health: ", health)
+
+	if health <= 0:
+		die()
+
+func die() -> void:
+	print("Player died")
+	queue_free()
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(1)

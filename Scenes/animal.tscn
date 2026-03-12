@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx1uqcjf0sx4n"]
 
 [ext_resource type="Texture2D" uid="uid://rb1fb8p77oxy" path="res://Cute_Fantasy_Free/Animals/Chicken/Chicken.png" id="1_3mj6s"]
-[ext_resource type="Script" uid="uid://pdstgbja0h0g" path="res://Scripts/animal_character_body_2d.gd" id="1_ixs66"]
+[ext_resource type="Script" uid="uid://pdstgbja0h0g" path="res://Scripts/Animal.gd" id="1_ixs66"]
 [ext_resource type="Texture2D" uid="uid://dedl7cq4g3iyt" path="res://Cute_Fantasy_Free/Animals/Cow/Cow.png" id="2_ixs66"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gxqf"]
