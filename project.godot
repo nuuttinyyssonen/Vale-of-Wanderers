@@ -14,6 +14,10 @@ config/name="Vale of Wanderers"
 run/main_scene="uid://cn0j5hwe8oj1w"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+NavigationManager="*uid://1s0ielm5i23y"
+
 [input]
 
 attack={

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://rxx6qtbwp2np"]
+
+[ext_resource type="PackedScene" uid="uid://l6ai3d0fpv4d" path="res://Scenes/Player.tscn" id="1_fvrk5"]
+[ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://Scenes/Door.tscn" id="2_qwv7y"]
+
+[node name="Cave" type="Node2D" unique_id=670159003]
+
+[node name="Player" parent="." unique_id=1385586740 instance=ExtResource("1_fvrk5")]
+
+[node name="Node" type="Node" parent="." unique_id=2133431168]
+
+[node name="Door" parent="Node" unique_id=769291773 instance=ExtResource("2_qwv7y")]
+position = Vector2(1089, 290)
+destination_level_tag = "start_area"
+destination_door_tag = "start_area"
+
+[node name="Spawn" parent="Node/Door" index="1" unique_id=1987287655]
+position = Vector2(-45, 1)
+
+[editable path="Node/Door"]
