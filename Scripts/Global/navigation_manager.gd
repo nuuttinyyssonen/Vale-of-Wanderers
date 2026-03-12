@@ -16,4 +16,7 @@ func go_to_level(level_tag, destination_tag):
 	
 	if scene_to_load != null:
 		spawn_door_tag = destination_tag
-		get_tree().change_scene_to_packed(scene_to_load)
+		call_deferred("_deferred_go_to_level", scene_to_load)
+
+func _deferred_go_to_level(scene_to_load: PackedScene) -> void:
+	get_tree().change_scene_to_packed(scene_to_load)

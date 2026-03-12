@@ -424,14 +424,14 @@ animations = [{
 size = Vector2(25, 11)
 
 [node name="Player" type="Node2D" unique_id=1385586740 groups=["player"]]
-position = Vector2(762, 275)
+position = Vector2(699, 341)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1021909695]
-position = Vector2(-204, 51)
+position = Vector2(0, 4)
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=125216479]
-position = Vector2(5, 0.9999981)
+position = Vector2(5, -5)
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_dewec")
 animation = &"attack_up"
