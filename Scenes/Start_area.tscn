@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://b43kdmnmqy3y2" path="res://Cute_Fantasy_Free/Tiles/Water_Middle.png" id="6_j1mnq"]
 [ext_resource type="Texture2D" uid="uid://hq5vpmqj210k" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/bridges.png" id="7_twmo5"]
 [ext_resource type="Texture2D" uid="uid://dar6s7xq4xr0k" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/wall-tiles-32x32.png" id="8_67u81"]
-[ext_resource type="PackedScene" uid="uid://d04gu0wvl2q00" path="res://Scenes/Trees.tscn" id="9_0fxvv"]
 [ext_resource type="Texture2D" uid="uid://djianqp46wpsv" path="res://Cute_Fantasy_Free/Outdoor decoration/House_1_Wood_Base_Blue.png" id="9_c3c73"]
-[ext_resource type="PackedScene" uid="uid://l6ai3d0fpv4d" path="res://Scenes/Player.tscn" id="11_twmo5"]
+[ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="11_vm56h"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://Scenes/Door.tscn" id="13_8oq7v"]
 [ext_resource type="PackedScene" uid="uid://dgcommgd3jio2" path="res://Scenes/Chicken.tscn" id="13_j1mnq"]
+[ext_resource type="PackedScene" uid="uid://dc6p2exwv1j05" path="res://Props/Plants/plant.tscn" id="14_vm56h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
 texture = ExtResource("1_0fxvv")
@@ -571,20 +571,26 @@ texture = ExtResource("9_c3c73")
 position = Vector2(205, -174)
 shape = SubResource("RectangleShape2D_ycdy4")
 
+[node name="Player" parent="." unique_id=1100355087 instance=ExtResource("11_vm56h")]
+position = Vector2(-157, -62)
+
 [node name="CaveEntrance" type="Area2D" parent="." unique_id=504233023]
 script = SubResource("GDScript_j1mnq")
-
-[node name="Player" parent="." unique_id=1385586740 instance=ExtResource("11_twmo5")]
-position = Vector2(-39, -51)
-
-[node name="Trees" parent="." unique_id=679227458 instance=ExtResource("9_0fxvv")]
-position = Vector2(-781, -287)
 
 [node name="Chicken" parent="." unique_id=1782621964 instance=ExtResource("13_j1mnq")]
 position = Vector2(-232, -22)
 
 [node name="Chicken2" parent="." unique_id=1261387101 instance=ExtResource("13_j1mnq")]
 position = Vector2(-311, 105)
+
+[node name="Plant" parent="." unique_id=613631132 instance=ExtResource("14_vm56h")]
+position = Vector2(-14, 51)
+
+[node name="Plant2" parent="." unique_id=271447411 instance=ExtResource("14_vm56h")]
+position = Vector2(60, 71)
+
+[node name="Plant3" parent="." unique_id=345566136 instance=ExtResource("14_vm56h")]
+position = Vector2(-58, 104)
 
 [node name="Chicken3" parent="." unique_id=463526877 instance=ExtResource("13_j1mnq")]
 position = Vector2(-358, -130)

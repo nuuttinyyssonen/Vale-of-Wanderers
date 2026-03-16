@@ -46,6 +46,11 @@ move_right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="PlayerHurt"
+2d_physics/layer_9="Enemy"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

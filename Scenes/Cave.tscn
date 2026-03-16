@@ -1,12 +1,11 @@
 [gd_scene format=4 uid="uid://rxx6qtbwp2np"]
 
-[ext_resource type="PackedScene" uid="uid://l6ai3d0fpv4d" path="res://Scenes/Player.tscn" id="1_fvrk5"]
 [ext_resource type="Script" uid="uid://cpcx8ed4j7eny" path="res://Scripts/cave.gd" id="1_gc3nt"]
 [ext_resource type="Texture2D" uid="uid://bbmo60y5mbsjd" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/ground-tiles-32x32.png" id="2_ofyxu"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://Scenes/Door.tscn" id="2_qwv7y"]
 [ext_resource type="Texture2D" uid="uid://dar6s7xq4xr0k" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/wall-tiles-32x32.png" id="3_2ngrw"]
 [ext_resource type="Texture2D" uid="uid://8w6yyk168jm5" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/assets-all.png" id="4_2ngrw"]
-[ext_resource type="PackedScene" uid="uid://bwx6f3sylwgyl" path="res://Scenes/Enemy.tscn" id="5_yw2ac"]
+[ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="6_yw2ac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yw2ac"]
 texture = ExtResource("2_ofyxu")
@@ -553,11 +552,8 @@ texture = ExtResource("4_2ngrw")
 region_enabled = true
 region_rect = Rect2(38.331726, 324.9501, 79.02634, 53.23178)
 
-[node name="Enemy" parent="." unique_id=85219188 instance=ExtResource("5_yw2ac")]
-position = Vector2(268, 174)
-
-[node name="Player" parent="." unique_id=1385586740 instance=ExtResource("1_fvrk5")]
-position = Vector2(561, 360)
+[node name="Player" parent="." unique_id=1100355087 instance=ExtResource("6_yw2ac")]
+position = Vector2(68, 439)
 
 [node name="Node" type="Node" parent="." unique_id=2133431168]
 
