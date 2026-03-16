@@ -4,6 +4,8 @@ class_name State_Attack extends State
 @onready var idle: State_Idle = $"../idle"
 @onready var attack_animation: AnimationPlayer = $"../../Sprite2D/AttackSprite/AnimationPlayer"
 @onready var attack_sound: AudioStreamPlayer2D = $"../../AttackSound"
+@onready var hurt_box: HurtBox = $"../../Interactions/HurtBox"
+@onready var interactions: Node2D = $"../../Interactions"
 
 var attacking : bool = false
 
@@ -14,6 +16,8 @@ func Enter() -> void:
 	attack_sound.pitch_scale = randf_range(0.9, 1.1)
 	attack_sound.play()
 	
+	hurt_box.monitoring = true
+	
 	animation_player.animation_finished.connect(EndAttack)
 	attacking = true
 	pass
@@ -22,6 +26,7 @@ func Enter() -> void:
 func Exit() -> void:
 	animation_player.animation_finished.disconnect(EndAttack)
 	attacking = false
+	hurt_box.monitoring = false
 	pass
 
 
