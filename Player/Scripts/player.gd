@@ -43,7 +43,6 @@ func SetDirection() -> bool:
 	return true
 
 
-
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirection())
 	pass

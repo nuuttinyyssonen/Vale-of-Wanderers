@@ -1,15 +1,17 @@
-class_name State
-extends Node
+class_name EnemyState_Idle extends State
 
-var actor: CharacterBody2D
+@onready var walk: EnemyState_Walk = $"../walk"
 
 func Enter() -> void:
-	pass
+	actor.velocity = Vector2.ZERO
+	actor.UpdateAnimation("idle")
 
 func Exit() -> void:
 	pass
 
 func Process(_delta: float) -> State:
+	if actor.direction != Vector2.ZERO:
+		return walk
 	return null
 
 func Physics(_delta: float) -> State:

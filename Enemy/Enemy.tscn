@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://bdrfgg37akyau"]
+
+[ext_resource type="Texture2D" uid="uid://bmod81blwmwp7" path="res://Enemy/sprites/Slime_Green.png" id="1_3o4wt"]
+[ext_resource type="Script" uid="uid://dnjkj2yggofoj" path="res://Enemy/Scripts/enemy.gd" id="1_vonkd"]
+[ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_epr5s"]
+[ext_resource type="Script" uid="uid://bna3jmgtgpci" path="res://GeneralNodes/Hitbox/hit_box.gd" id="2_jd4ap"]
+[ext_resource type="Script" uid="uid://daesrrnpxbrj3" path="res://Player/Scripts/player_state_machine.gd" id="3_d2k2y"]
+[ext_resource type="Script" uid="uid://ddxxkl3hhfk2q" path="res://Enemy/Scripts/state_enemy_walk.gd" id="4_jd4ap"]
+[ext_resource type="Script" uid="uid://btesxe4b0flpa" path="res://Enemy/Scripts/state_enemy_idle.gd" id="5_1ypri"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vso2s"]
+
+[sub_resource type="Animation" id="Animation_epr5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3o4wt"]
+resource_name = "death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [16, 23]
+}
+
+[sub_resource type="Animation" id="Animation_vonkd"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_vso2s"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkela"]
+_data = {
+&"RESET": SubResource("Animation_epr5s"),
+&"death": SubResource("Animation_3o4wt"),
+&"idle": SubResource("Animation_vonkd"),
+&"walk": SubResource("Animation_vso2s")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vonkd"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=524650763]
+script = ExtResource("1_vonkd")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1360738221]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("2_jd4ap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=411361541]
+shape = SubResource("CircleShape2D_vso2s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1756786473]
+texture = ExtResource("1_3o4wt")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1647669672]
+libraries/ = SubResource("AnimationLibrary_fkela")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1396767933]
+script = ExtResource("3_d2k2y")
+
+[node name="walk" type="Node" parent="StateMachine" unique_id=1375987107]
+script = ExtResource("4_jd4ap")
+
+[node name="idle" type="Node" parent="StateMachine" unique_id=161594947]
+script = ExtResource("5_1ypri")
+
+[node name="death" type="Node" parent="StateMachine" unique_id=1374649775]
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
+
+[node name="Interactions" type="Node2D" parent="." unique_id=1106752102]
+
+[node name="HurtBox" parent="Interactions" unique_id=262719249 instance=ExtResource("2_epr5s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox" unique_id=753311656]
+shape = SubResource("CircleShape2D_vonkd")
+debug_color = Color(0.93872005, 0.12288866, 0.3227299, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=1452283530]
+wait_time = 2.0

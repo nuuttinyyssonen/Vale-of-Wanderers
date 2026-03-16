@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwx6f3sylwgyl"]
 
-[ext_resource type="Script" uid="uid://dnjkj2yggofoj" path="res://Scripts/Enemy.gd" id="1_wovta"]
-[ext_resource type="Texture2D" uid="uid://bmod81blwmwp7" path="res://Cute_Fantasy_Free/Enemies/Slime_Green.png" id="2_xeo28"]
+[ext_resource type="Script" uid="uid://dnjkj2yggofoj" path="res://Enemy/Scripts/enemy.gd" id="1_wovta"]
+[ext_resource type="Texture2D" uid="uid://bmod81blwmwp7" path="res://Enemy/sprites/Slime_Green.png" id="2_xeo28"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hfgpu"]
 radius = 7.566399

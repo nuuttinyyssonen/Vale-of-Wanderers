@@ -10,8 +10,8 @@ class_name State_Attack extends State
 var attacking : bool = false
 
 func Enter() -> void:
-	player.UpdateAnimation("attack")
-	attack_animation.play("attack_" + player.AnimDirection())
+	actor.UpdateAnimation("attack")
+	attack_animation.play("attack_" + actor.AnimDirection())
 	
 	attack_sound.pitch_scale = randf_range(0.9, 1.1)
 	attack_sound.play()
@@ -31,9 +31,9 @@ func Exit() -> void:
 
 
 func Process(_delta: float) -> State:
-	player.velocity = Vector2.ZERO
+	actor.velocity = Vector2.ZERO
 	if attacking == false:
-		if player.direction == Vector2.ZERO:
+		if actor.direction == Vector2.ZERO:
 			return idle
 		else:
 			return walk

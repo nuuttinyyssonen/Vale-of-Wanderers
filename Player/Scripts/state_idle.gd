@@ -4,7 +4,7 @@ class_name State_Idle extends State
 
 
 func Enter() -> void:
-	player.UpdateAnimation("idle")
+	actor.UpdateAnimation("idle")
 	pass
 
 
@@ -13,9 +13,9 @@ func Exit() -> void:
 
 
 func Process(_delta: float) -> State:
-	if player.direction != Vector2.ZERO:
+	if actor.direction != Vector2.ZERO:
 		return walk
-	player.velocity = Vector2.ZERO
+	actor.velocity = Vector2.ZERO
 	return null
 
 
