@@ -420,34 +420,31 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
-size = Vector2(25, 11)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(107, 111)
 
-[node name="Player" type="Node2D" unique_id=1385586740 groups=["player"]]
-position = Vector2(699, 341)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
+size = Vector2(25, 11)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1021909695]
-position = Vector2(0, 4)
+[node name="Player" type="CharacterBody2D" unique_id=1523086680 groups=["player"]]
+position = Vector2(699, 341)
+rotation = 0.006369793
 script = ExtResource("1_kyqiw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=125216479]
-position = Vector2(5, -5)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=125216479]
+position = Vector2(5, -1)
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_dewec")
 animation = &"attack_up"
 
-[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1376407940]
-position = Vector2(4, 10.5)
-shape = SubResource("RectangleShape2D_5ixxa")
-
-[node name="AttackArea" type="Area2D" parent="CharacterBody2D" unique_id=90067628]
+[node name="AttackArea" type="Area2D" parent="." unique_id=90067628]
+position = Vector2(0, 4)
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea" unique_id=706650788]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=706650788]
 position = Vector2(13.5, -5.5)
 shape = SubResource("RectangleShape2D_kyqiw")
 
-[connection signal="body_entered" from="CharacterBody2D/AttackArea" to="CharacterBody2D" method="_on_attack_area_body_entered"]
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="." unique_id=1376407940]
+position = Vector2(4, 14.5)
+shape = SubResource("RectangleShape2D_5ixxa")

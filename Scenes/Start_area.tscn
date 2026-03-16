@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dar6s7xq4xr0k" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/wall-tiles-32x32.png" id="8_67u81"]
 [ext_resource type="PackedScene" uid="uid://d04gu0wvl2q00" path="res://Scenes/Trees.tscn" id="9_0fxvv"]
 [ext_resource type="Texture2D" uid="uid://djianqp46wpsv" path="res://Cute_Fantasy_Free/Outdoor decoration/House_1_Wood_Base_Blue.png" id="9_c3c73"]
-[ext_resource type="PackedScene" uid="uid://dx1uqcjf0sx4n" path="res://Scenes/animal.tscn" id="10_h6f5b"]
 [ext_resource type="PackedScene" uid="uid://l6ai3d0fpv4d" path="res://Scenes/Player.tscn" id="11_twmo5"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://Scenes/Door.tscn" id="13_8oq7v"]
+[ext_resource type="PackedScene" uid="uid://dgcommgd3jio2" path="res://Scenes/Chicken.tscn" id="13_j1mnq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
 texture = ExtResource("1_0fxvv")
@@ -580,8 +580,17 @@ position = Vector2(-39, -51)
 [node name="Trees" parent="." unique_id=679227458 instance=ExtResource("9_0fxvv")]
 position = Vector2(-781, -287)
 
-[node name="Chicken" parent="." unique_id=875132556 instance=ExtResource("10_h6f5b")]
-position = Vector2(-781, -287)
+[node name="Chicken" parent="." unique_id=1782621964 instance=ExtResource("13_j1mnq")]
+position = Vector2(-232, -22)
+
+[node name="Chicken2" parent="." unique_id=1261387101 instance=ExtResource("13_j1mnq")]
+position = Vector2(-311, 105)
+
+[node name="Chicken3" parent="." unique_id=463526877 instance=ExtResource("13_j1mnq")]
+position = Vector2(-358, -130)
+
+[node name="Chicken4" parent="." unique_id=2059160126 instance=ExtResource("13_j1mnq")]
+position = Vector2(330, 200)
 
 [node name="Doors" type="Node" parent="." unique_id=876793477]
 
@@ -590,6 +599,9 @@ position = Vector2(1008, 26)
 door_tag = "start_to_cave"
 destination_level_tag = "cave"
 destination_door_tag = "cave_entrance"
+
+[node name="CollisionShape2D" parent="Doors/CaveEntrance" index="0" unique_id=806296033]
+position = Vector2(-0.5, 5)
 
 [node name="Spawn" parent="Doors/CaveEntrance" index="1" unique_id=1987287655]
 position = Vector2(1, 38)

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dgcommgd3jio2"]
+
+[ext_resource type="Script" uid="uid://pdstgbja0h0g" path="res://Scripts/Animal.gd" id="1_yybek"]
+[ext_resource type="Texture2D" uid="uid://rb1fb8p77oxy" path="res://Cute_Fantasy_Free/Animals/Chicken/Chicken.png" id="2_26qs5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_871rf"]
+size = Vector2(25, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gxqf"]
+atlas = ExtResource("2_26qs5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixs66"]
+atlas = ExtResource("2_26qs5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufijb"]
+atlas = ExtResource("2_26qs5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2in5d"]
+atlas = ExtResource("2_26qs5")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ouy"]
+atlas = ExtResource("2_26qs5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73ul7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gxqf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixs66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufijb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2in5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8ouy")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Chicken" type="CharacterBody2D" unique_id=1782621964]
+script = ExtResource("1_yybek")
+
+[node name="Timer" type="Timer" parent="." unique_id=2066122599]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1527325077]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_871rf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=104114401]
+position = Vector2(-1, -10)
+scale = Vector2(2.39, 2.39)
+sprite_frames = SubResource("SpriteFrames_73ul7")
+animation = &"move"
+frame = 3
+frame_progress = 0.15616503

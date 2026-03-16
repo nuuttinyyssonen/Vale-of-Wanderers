@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 class_name Player
 
 @onready var anim = $AnimatedSprite2D
@@ -10,17 +9,21 @@ var last_direction = Vector2.DOWN
 var is_attacking = false
 var max_health := 5
 var health := 5
+var attack_damage := 1
 
 func _ready():
 	anim.animation_finished.connect(_on_animation_finished)
+	attack_area.monitoring = true
+
 	if anim.sprite_frames:
 		anim.sprite_frames.set_animation_loop("attack_side", false)
 		anim.sprite_frames.set_animation_loop("attack_down", false)
 		anim.sprite_frames.set_animation_loop("attack_up", false)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_attacking:
 		velocity = Vector2.ZERO
+		move_and_slide()
 		return
 
 	var input_vector = Vector2.ZERO
@@ -73,6 +76,11 @@ func start_attack():
 	attack_area.monitoring = true
 	velocity = Vector2.ZERO
 
+	# Damage enemies already inside the hitbox when attack starts
+	for body in attack_area.get_overlapping_bodies():
+		if body != self and body.has_method("take_damage"):
+			body.take_damage(attack_damage)
+
 	if last_direction == Vector2.RIGHT:
 		anim.flip_h = false
 		anim.play("attack_side")
@@ -100,7 +108,6 @@ func die() -> void:
 	print("Player died")
 	queue_free()
 
-
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage"):
-		body.take_damage(1)
+	if is_attacking and body != self and body.has_method("take_damage"):
+		body.take_damage(attack_damage)
