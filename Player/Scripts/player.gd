@@ -7,6 +7,8 @@ var direction : Vector2 = Vector2.ZERO
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
+var health: int = 5
+
 signal DirectionChanged(new_direction : Vector2)
 
 func _ready() -> void:
@@ -22,6 +24,12 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+
+func TakeDamage(_damage: int) -> void:
+	health -= _damage
+	print("Player health: ", health)
+	if health <= 0:
+		queue_free()	
 
 
 func SetDirection() -> bool:

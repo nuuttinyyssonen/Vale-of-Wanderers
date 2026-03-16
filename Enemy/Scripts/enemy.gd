@@ -4,10 +4,12 @@ extends CharacterBody2D
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
 var velocity_speed: float = 40.0
+var is_dead: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_timer: Timer = $Timer
 @onready var enemy_state_machine: PlayerStateMachine = $StateMachine
+@onready var damage_area = $DamageArea
 
 signal DirectionChanged(new_direction: Vector2)
 
@@ -16,7 +18,7 @@ func _ready() -> void:
 	randomize()
 	move_timer.timeout.connect(_on_move_timer_timeout)
 	_on_move_timer_timeout()
-	$HitBox.Damaged.connect( TakeDamge )
+	$HitBox.Damaged.connect( TakeDamage )
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -54,9 +56,23 @@ func SetDirection() -> bool:
 
 func UpdateAnimation(state: String) -> void:
 	animation_player.play(state)
+	
+func TakeDamage(_damage: int) -> void:
+	if is_dead:
+		return
+		
+	is_dead = true
+	
+	velocity = Vector2.ZERO
+	move_timer.stop()
+	$HitBox.monitoring = false
+	
+	UpdateAnimation("death")
 
-func TakeDamge( _damage: int ) -> void:
-	queue_free()
-	pass
-	
-	
+	await animation_player.animation_finished
+	queue_free()	
+
+
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.TakeDamage(1)

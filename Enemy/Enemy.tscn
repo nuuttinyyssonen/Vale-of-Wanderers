@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://ddxxkl3hhfk2q" path="res://Enemy/Scripts/state_enemy_walk.gd" id="4_jd4ap"]
 [ext_resource type="Script" uid="uid://btesxe4b0flpa" path="res://Enemy/Scripts/state_enemy_idle.gd" id="5_1ypri"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jd4ap"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vso2s"]
 
 [sub_resource type="Animation" id="Animation_epr5s"]
@@ -85,8 +87,14 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vonkd"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ypri"]
+radius = 18.027756
+
 [node name="Enemy" type="CharacterBody2D" unique_id=524650763]
 script = ExtResource("1_vonkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=8780493]
+shape = SubResource("CircleShape2D_jd4ap")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1360738221]
 collision_layer = 256
@@ -127,3 +135,10 @@ debug_color = Color(0.93872005, 0.12288866, 0.3227299, 0.41960785)
 
 [node name="Timer" type="Timer" parent="." unique_id=1452283530]
 wait_time = 2.0
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1273054103]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=822075847]
+shape = SubResource("CircleShape2D_1ypri")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
