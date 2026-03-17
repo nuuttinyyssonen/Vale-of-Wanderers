@@ -561,9 +561,6 @@ position = Vector2(462, 564)
 [node name="Enemy9" parent="Enemies" unique_id=713365941 instance=ExtResource("4_hglgo")]
 position = Vector2(625, 512)
 
-[node name="Player" parent="." unique_id=1100355087 instance=ExtResource("5_2i2bt")]
-position = Vector2(68, 439)
-
 [node name="PlayerUi" parent="." unique_id=997963239 instance=ExtResource("6_jucdy")]
 
 [node name="Chest" type="StaticBody2D" parent="." unique_id=1345981330]
@@ -607,12 +604,19 @@ position = Vector2(5, -53)
 
 [node name="level_2_entrance" parent="Node2" unique_id=1370482100 instance=ExtResource("8_6gtk5")]
 position = Vector2(183, 498)
+door_tag = "Cave Exit"
+destination_level_tag = "Cave Level 2"
+destination_door_tag = "Cave Level 2 Entrance"
+spawn_direction = "down"
 
 [node name="CollisionShape2D" parent="Node2/level_2_entrance" index="0" unique_id=806296033]
 position = Vector2(3.25, -1)
 
 [node name="Spawn" parent="Node2/level_2_entrance" index="1" unique_id=1987287655]
 position = Vector2(1, 40)
+
+[node name="Player" parent="." unique_id=1100355087 instance=ExtResource("5_2i2bt")]
+position = Vector2(68, 439)
 
 [node name="WallTop2" type="StaticBody2D" parent="." unique_id=226915272]
 physics_material_override = SubResource("PhysicsMaterial_yw2ac")

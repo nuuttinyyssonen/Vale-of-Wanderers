@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbo8c"]
 atlas = ExtResource("1_qbo8c")
-region = Rect2(17.986725, 0, 9.604321, 8.274)
+region = Rect2(17.987, 0, 10.4, 8.274)
 
 [node name="PlayerUi" type="Control" unique_id=997963239]
 layout_mode = 3

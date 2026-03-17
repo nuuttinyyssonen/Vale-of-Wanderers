@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://day2xx1a2hwly"]
+
+[ext_resource type="Script" uid="uid://d3fyl3dd6mmap" path="res://Levels/Cave Level 2/Scripts/CaveLevel2.gd" id="1_3x42i"]
+[ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="1_5wr0p"]
+[ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="2_3x42i"]
+[ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="4_r31ke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypf8f"]
+
+[node name="CaveLevel2" type="Node2D" unique_id=2105790922]
+script = ExtResource("1_3x42i")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1008828568]
+
+[node name="Player" parent="." unique_id=1100355087 instance=ExtResource("1_5wr0p")]
+
+[node name="PlayerUi" parent="." unique_id=997963239 instance=ExtResource("2_3x42i")]
+
+[node name="Entrance" type="Node" parent="." unique_id=244167156]
+
+[node name="level_2_entrance" parent="Entrance" unique_id=769291773 instance=ExtResource("4_r31ke")]
+position = Vector2(273, 469)
+door_tag = "Cave Level 2 Entrance"
+destination_level_tag = "Cave"
+destination_door_tag = "Cave Exit"
+spawn_direction = "down"
+
+[node name="Marker2D" type="Marker2D" parent="Entrance/level_2_entrance" unique_id=1950810119]
+position = Vector2(-4, 2)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Entrance/level_2_entrance" unique_id=1214172864]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_ypf8f")
+
+[node name="Exit" type="Node" parent="." unique_id=1071065397]
+
+[node name="level_2_exit" parent="Exit" unique_id=948388753 instance=ExtResource("4_r31ke")]
+position = Vector2(273, 469)
+
+[node name="Marker2D" type="Marker2D" parent="Exit/level_2_exit" unique_id=1243474172]
+position = Vector2(-4, 2)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Exit/level_2_exit" unique_id=1967355020]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_ypf8f")

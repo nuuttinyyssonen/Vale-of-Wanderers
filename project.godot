@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 NavigationManager="*uid://1s0ielm5i23y"
+PlayerState="*uid://cvns3blgflowl"
 
 [global_group]
 

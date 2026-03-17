@@ -14,6 +14,8 @@ signal DirectionChanged(new_direction : Vector2)
 signal health_changed
 
 func _ready() -> void:
+	current_health = PlayerState.current_health
+	PlayerState.health_changed.emit(PlayerState.current_health)
 	state_machine.Initialize(self)
 	pass
 
@@ -29,9 +31,7 @@ func _physics_process(_delta: float) -> void:
 
 func TakeDamage(_damage: int) -> void:
 	current_health -= _damage
-	current_health = clamp(current_health, 0, max_health)
-	print("player health: ", current_health)
-	health_changed.emit(current_health)
+	PlayerState.set_health(current_health)
 	if current_health <= 0:
 		queue_free()	
 
