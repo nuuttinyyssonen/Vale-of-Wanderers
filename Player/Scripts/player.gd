@@ -10,6 +10,7 @@ var direction : Vector2 = Vector2.ZERO
 var health: int = 5
 
 signal DirectionChanged(new_direction : Vector2)
+signal health_changed(new_health)
 
 func _ready() -> void:
 	state_machine.Initialize(self)
@@ -28,6 +29,7 @@ func _physics_process(delta: float) -> void:
 func TakeDamage(_damage: int) -> void:
 	health -= _damage
 	print("Player health: ", health)
+	health_changed.emit(health)
 	if health <= 0:
 		queue_free()	
 

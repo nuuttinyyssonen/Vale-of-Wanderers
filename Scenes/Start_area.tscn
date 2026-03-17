@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dar6s7xq4xr0k" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/wall-tiles-32x32.png" id="8_67u81"]
 [ext_resource type="Texture2D" uid="uid://djianqp46wpsv" path="res://Cute_Fantasy_Free/Outdoor decoration/House_1_Wood_Base_Blue.png" id="9_c3c73"]
 [ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="11_vm56h"]
+[ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="12_vm56h"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://Scenes/Door.tscn" id="13_8oq7v"]
 [ext_resource type="PackedScene" uid="uid://dgcommgd3jio2" path="res://Scenes/Chicken.tscn" id="13_j1mnq"]
 [ext_resource type="PackedScene" uid="uid://dc6p2exwv1j05" path="res://Props/Plants/plant.tscn" id="14_vm56h"]
@@ -573,6 +574,17 @@ shape = SubResource("RectangleShape2D_ycdy4")
 
 [node name="Player" parent="." unique_id=1100355087 instance=ExtResource("11_vm56h")]
 position = Vector2(-157, -62)
+
+[node name="PlayerUi" parent="." unique_id=997963239 instance=ExtResource("12_vm56h")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -603.0
+offset_top = -291.0
+offset_right = -503.0
+offset_bottom = -271.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="CaveEntrance" type="Area2D" parent="." unique_id=504233023]
 script = SubResource("GDScript_j1mnq")
