@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://o1qkko22enwn" path="res://Player/Audio/SwordSwoosh.wav" id="8_s1rgi"]
 [ext_resource type="Script" uid="uid://8riw0yym6lrh" path="res://Player/Scripts/PlayerInteractions.gd" id="9_0j2ni"]
 [ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="9_j23h2"]
+[ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="11_v0k0e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
 
@@ -431,3 +432,13 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox" unique_id=2080222162]
 shape = SubResource("CircleShape2D_j23h2")
 debug_color = Color(0.67591625, 0.027055835, 0.15053543, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=829654438]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="PlayerUi" parent="." unique_id=997963239 instance=ExtResource("11_v0k0e")]
+offset_left = -566.0
+offset_top = -297.0
+offset_right = -566.0
+offset_bottom = -297.0

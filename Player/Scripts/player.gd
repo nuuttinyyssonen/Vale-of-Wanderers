@@ -11,7 +11,6 @@ var current_health: int = 5
 var max_health: int = 5
 
 signal DirectionChanged(new_direction : Vector2)
-signal health_changed
 
 func _ready() -> void:
 	current_health = PlayerState.current_health

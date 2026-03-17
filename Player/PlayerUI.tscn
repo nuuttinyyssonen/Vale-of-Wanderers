@@ -15,34 +15,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Hearts" type="HBoxContainer" parent="." unique_id=1286168590]
-layout_mode = 0
-offset_right = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=686299091]
+
+[node name="Hearts" type="HBoxContainer" parent="CanvasLayer" unique_id=1286168590]
+offset_right = 66.0
 offset_bottom = 40.0
 scale = Vector2(2.11, 2.11)
 script = ExtResource("1_h8npq")
 
-[node name="TextureRect" type="TextureRect" parent="Hearts" unique_id=1794842382]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=1794842382]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="Hearts" unique_id=368052479]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=368052479]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="Hearts" unique_id=690643922]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=690643922]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
 
-[node name="TextureRect4" type="TextureRect" parent="Hearts" unique_id=77923402]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=77923402]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
 
-[node name="TextureRect5" type="TextureRect" parent="Hearts" unique_id=1452485760]
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=1452485760]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
