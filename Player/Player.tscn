@@ -377,9 +377,9 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
-radius = 20.0
+radius = 25.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1100355087]
+[node name="Player" type="CharacterBody2D" unique_id=1100355087 groups=["player"]]
 position = Vector2(588, 312)
 script = ExtResource("1_q3lat")
 

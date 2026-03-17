@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbo8c"]
 atlas = ExtResource("1_qbo8c")
-region = Rect2(0.15455246, 0, 9.127354, 8.274)
+region = Rect2(17.986725, 0, 9.604321, 8.274)
 
 [node name="PlayerUi" type="Control" unique_id=997963239]
 layout_mode = 3
@@ -14,13 +14,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h8npq")
 
 [node name="Hearts" type="HBoxContainer" parent="." unique_id=1286168590]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(2.11, 2.11)
+script = ExtResource("1_h8npq")
 
 [node name="TextureRect" type="TextureRect" parent="Hearts" unique_id=1794842382]
 layout_mode = 2
@@ -42,12 +42,7 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1490378913]
-layout_mode = 0
-texture = SubResource("AtlasTexture_qbo8c")
-stretch_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1882433375]
-layout_mode = 0
+[node name="TextureRect5" type="TextureRect" parent="Hearts" unique_id=1452485760]
+layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2

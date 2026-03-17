@@ -18,12 +18,6 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 NavigationManager="*uid://1s0ielm5i23y"
 
-[display]
-
-window/size/viewport_width=2560
-window/size/viewport_height=1440
-window/stretch/scale=1.93
-
 [input]
 
 attack={

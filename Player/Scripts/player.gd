@@ -7,10 +7,11 @@ var direction : Vector2 = Vector2.ZERO
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
-var health: int = 5
+var current_health: int = 5
+var max_health: int = 5
 
 signal DirectionChanged(new_direction : Vector2)
-signal health_changed(new_health)
+signal health_changed
 
 func _ready() -> void:
 	state_machine.Initialize(self)
@@ -27,10 +28,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func TakeDamage(_damage: int) -> void:
-	health -= _damage
-	print("Player health: ", health)
-	health_changed.emit(health)
-	if health <= 0:
+	current_health -= _damage
+	current_health = clamp(current_health, 0, max_health)
+	print("player health: ", current_health)
+	health_changed.emit(current_health)
+	if current_health <= 0:
 		queue_free()	
 
 

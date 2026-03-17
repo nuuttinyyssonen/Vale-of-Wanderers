@@ -60,19 +60,33 @@ func UpdateAnimation(state: String) -> void:
 func TakeDamage(_damage: int) -> void:
 	if is_dead:
 		return
-		
+
 	is_dead = true
-	
 	velocity = Vector2.ZERO
 	move_timer.stop()
-	$HitBox.monitoring = false
-	
+
+	_disable_damage()
+
 	UpdateAnimation("death")
 
 	await animation_player.animation_finished
-	queue_free()	
+	queue_free()
+
+func _disable_damage() -> void:
+	$Interactions/HurtBox.set_deferred("monitoring", false)
+	$Interactions/HurtBox.set_deferred("monitorable", false)
+	$HitBox.set_deferred("monitoring", false)
+	$HitBox.set_deferred("monitorable", false)
+
+	if $Interactions/HurtBox.has_node("CollisionShape2D"):
+		$Interactions/HurtBox/CollisionShape2D.set_deferred("disabled", true)
+
+	if $HitBox.has_node("CollisionShape2D"):
+		$HitBox/CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
+	if is_dead:
+		return
 	if body is Player:
 		body.TakeDamage(1)

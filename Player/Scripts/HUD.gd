@@ -1,22 +1,35 @@
-extends Control
+extends HBoxContainer
 
-@export var full_heart: Texture2D
-@export var empty_heart: Texture2D
+@onready var hearts = get_children()
 
-func _ready() -> void:
-	var player = get_tree().current_scene.get_node_or_null("Player")
+var player = null
+
+var heart_texture = preload("res://Player/sprites/gui-health.png")
+var full_region = Rect2(17.8, 0, 9, 8)
+var empty_region = Rect2(0, 0, 9, 8)
+
+func _ready():
+	call_deferred("_connect_to_player")
+
+func _connect_to_player():
+	player = get_tree().get_first_node_in_group("player")
+
 	if player == null:
-		print("Player not found")
+		push_error("Player not found in group 'player'")
 		return
 
 	player.health_changed.connect(update_hearts)
-	update_hearts(player.health, player.max_health)
+	update_hearts(player.current_health)
 
-func update_hearts(current_health: int, max_health: int) -> void:
-	var hearts = $Hearts.get_children()
+func set_heart_region(heart: TextureRect, region: Rect2):
+	var atlas = AtlasTexture.new()
+	atlas.atlas = heart_texture
+	atlas.region = region
+	heart.texture = atlas
 
+func update_hearts(current_health: int):
 	for i in range(hearts.size()):
 		if i < current_health:
-			hearts[i].texture = full_heart
+			set_heart_region(hearts[i], full_region)
 		else:
-			hearts[i].texture = empty_heart
+			set_heart_region(hearts[i], empty_region)
