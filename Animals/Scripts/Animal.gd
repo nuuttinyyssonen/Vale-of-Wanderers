@@ -12,7 +12,7 @@ func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 	_on_timer_timeout()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 

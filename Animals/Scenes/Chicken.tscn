@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgcommgd3jio2"]
 
-[ext_resource type="Script" uid="uid://pdstgbja0h0g" path="res://Scripts/Animal.gd" id="1_yybek"]
+[ext_resource type="Script" uid="uid://pdstgbja0h0g" path="res://Animals/Scripts/Animal.gd" id="1_yybek"]
 [ext_resource type="Texture2D" uid="uid://rb1fb8p77oxy" path="res://Cute_Fantasy_Free/Animals/Chicken/Chicken.png" id="2_26qs5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_871rf"]

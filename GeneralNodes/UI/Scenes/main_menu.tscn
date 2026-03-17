@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cn0j5hwe8oj1w"]
 
-[ext_resource type="Script" uid="uid://cborkl0idtydp" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://cborkl0idtydp" path="res://GeneralNodes/UI/Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://ssbar73ejqiu" path="res://Assets/background.PNG" id="2_ce3w2"]
 [ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="3_n45e2"]
 

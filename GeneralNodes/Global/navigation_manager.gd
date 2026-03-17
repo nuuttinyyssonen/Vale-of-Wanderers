@@ -1,7 +1,7 @@
 extends Node
 
-const scene_start = preload("res://Scenes/Start_area.tscn")
-const scene_cave = preload("res://Scenes/Cave.tscn")
+const scene_start = preload("res://Levels/Start Area/Scenes/Start_area.tscn")
+const scene_cave = preload("res://Levels/Cave Level 1/Scenes/Cave.tscn")
 
 var spawn_door_tag
 
