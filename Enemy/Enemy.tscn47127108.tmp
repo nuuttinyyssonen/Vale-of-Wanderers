@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://ddxxkl3hhfk2q" path="res://Enemy/Scripts/state_enemy_walk.gd" id="4_jd4ap"]
 [ext_resource type="Script" uid="uid://btesxe4b0flpa" path="res://Enemy/Scripts/state_enemy_idle.gd" id="5_1ypri"]
 [ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemy/Audio/hit_player.wav" id="7_1ypri"]
+[ext_resource type="Script" uid="uid://cobgfrspe5wrh" path="res://Enemy/Scripts/state_enemy_death.gd" id="7_uxjip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jd4ap"]
 
@@ -92,7 +93,6 @@ _data = {
 radius = 18.027756
 
 [node name="Enemy" type="CharacterBody2D" unique_id=524650763]
-collision_layer = 4
 script = ExtResource("1_vonkd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=8780493]
@@ -124,6 +124,9 @@ script = ExtResource("4_jd4ap")
 script = ExtResource("5_1ypri")
 
 [node name="death" type="Node" parent="StateMachine" unique_id=1374649775]
+
+[node name="chase" type="Node" parent="StateMachine" unique_id=22249653]
+script = ExtResource("7_uxjip")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
 stream = ExtResource("7_1ypri")

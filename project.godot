@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 NavigationManager="*uid://1s0ielm5i23y"
 
+[global_group]
+
+player=""
+
 [input]
 
 attack={

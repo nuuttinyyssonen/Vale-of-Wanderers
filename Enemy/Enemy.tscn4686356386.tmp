@@ -92,7 +92,6 @@ _data = {
 radius = 18.027756
 
 [node name="Enemy" type="CharacterBody2D" unique_id=524650763]
-collision_layer = 4
 script = ExtResource("1_vonkd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=8780493]
@@ -124,6 +123,8 @@ script = ExtResource("4_jd4ap")
 script = ExtResource("5_1ypri")
 
 [node name="death" type="Node" parent="StateMachine" unique_id=1374649775]
+
+[node name="chase" type="Node" parent="StateMachine" unique_id=22249653]
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
 stream = ExtResource("7_1ypri")
