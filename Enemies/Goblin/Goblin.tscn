@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://brl0jh7mjpdlq"]
+
+[ext_resource type="Texture2D" uid="uid://bj67wxht8t4q" path="res://Enemies/Goblin/sprites/goblin.png" id="1_ym7xy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ym7xy"]
+radius = 8.0
+
+[node name="Goblin" type="CharacterBody2D" unique_id=2109537380]
+collision_layer = 256
+collision_mask = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=50625685]
+texture = ExtResource("1_ym7xy")
+hframes = 8
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1195815255]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_ym7xy")

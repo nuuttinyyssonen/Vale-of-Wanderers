@@ -5,12 +5,17 @@ extends State
 @onready var idle: Goblin_EnemyState_Idle = $"../idle"
 
 func Enter() -> void:
-	actor.UpdateAnimation("walk")
+	if not actor.is_attacking:
+		actor.UpdateAnimation("walk")
 
 func Exit() -> void:
 	pass
 
 func Process(_delta: float) -> State:
+	if actor.is_attacking:
+		actor.velocity = Vector2.ZERO
+		return idle
+
 	if actor.direction == Vector2.ZERO:
 		return idle
 

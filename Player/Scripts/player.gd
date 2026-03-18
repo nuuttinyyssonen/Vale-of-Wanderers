@@ -13,6 +13,7 @@ var max_health: int = 5
 signal DirectionChanged(new_direction : Vector2)
 
 func _ready() -> void:
+	PlayerManager.player = self
 	current_health = PlayerState.current_health
 	PlayerState.health_changed.emit(PlayerState.current_health)
 	state_machine.Initialize(self)
