@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c2lk536l5lom7" path="res://Levels/Cave Level 2/Scripts/key.gd" id="5_23xfs"]
 [ext_resource type="Script" uid="uid://ecpimnqkclwq" path="res://Levels/Cave Level 2/Scripts/gate.gd" id="5_dgf02"]
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="5_e02ih"]
+[ext_resource type="PackedScene" uid="uid://jygsdwjk5577" path="res://Skeleton Enemies/Goblin Enemy.tscn" id="9_1jo41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5weqc"]
 texture = ExtResource("1_qd0b0")
@@ -1970,6 +1971,15 @@ shape = SubResource("RectangleShape2D_a6vxr")
 
 [node name="Player" parent="." unique_id=1100355087 instance=ExtResource("4_gqkei")]
 position = Vector2(639, 21)
+
+[node name="Enemy" parent="." unique_id=524650763 instance=ExtResource("9_1jo41")]
+position = Vector2(327, 29)
+
+[node name="Enemy2" parent="." unique_id=1916087742 instance=ExtResource("9_1jo41")]
+position = Vector2(369, 53)
+
+[node name="Enemy3" parent="." unique_id=957764614 instance=ExtResource("9_1jo41")]
+position = Vector2(242, 70)
 
 [node name="Water" type="StaticBody2D" parent="." unique_id=313646491]
 

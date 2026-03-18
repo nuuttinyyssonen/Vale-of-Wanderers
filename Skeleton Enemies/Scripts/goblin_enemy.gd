@@ -1,9 +1,9 @@
-class_name GolbinEnemy
+class_name Enemy
 extends CharacterBody2D
 
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.ZERO
-var velocity_speed: float = 80.0
+var velocity_speed: float = 100.0
 var is_dead: bool = false
 
 @export var chase_range: float = 300.0
@@ -22,13 +22,20 @@ func _ready() -> void:
 	randomize()
 	move_timer.timeout.connect(_on_move_timer_timeout)
 	_on_move_timer_timeout()
-	$HitBox.Damaged.connect( TakeDamage )
+	$HitBox.Damaged.connect(TakeDamage)
 
 func _physics_process(_delta: float) -> void:
 	if is_dead:
 		return
 
 	_update_chase()
+	velocity = direction * velocity_speed
+
+	if direction != Vector2.ZERO:
+		UpdateAnimation("walk")
+	else:
+		UpdateAnimation("idle")
+
 	move_and_slide()
 
 func _update_chase() -> void:
@@ -40,6 +47,7 @@ func _update_chase() -> void:
 
 	if distance <= chase_range:
 		direction = to_player.normalized()
+		SetDirection()
 
 func _on_move_timer_timeout() -> void:
 	if player != null and global_position.distance_to(player.global_position) <= chase_range:
@@ -60,14 +68,14 @@ func _on_move_timer_timeout() -> void:
 	move_timer.start()
 
 func SetDirection() -> bool:
-	var new_direction: Vector2 = cardinal_direction
-
 	if direction == Vector2.ZERO:
 		return false
 
-	if direction.y == 0:
+	var new_direction: Vector2
+
+	if abs(direction.x) > abs(direction.y):
 		new_direction = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
-	elif direction.x == 0:
+	else:
 		new_direction = Vector2.UP if direction.y < 0 else Vector2.DOWN
 
 	if new_direction == cardinal_direction:
@@ -77,9 +85,28 @@ func SetDirection() -> bool:
 	DirectionChanged.emit(new_direction)
 	return true
 
+func FacePlayer() -> void:
+	if player == null:
+		return
+
+	var to_player = player.global_position - global_position
+	if to_player == Vector2.ZERO:
+		return
+
+	direction = to_player.normalized()
+	SetDirection()
+
 func UpdateAnimation(state: String) -> void:
-	animation_player.play(state)
-	
+	animation_player.play(state + "_" + AnimDirection())
+
+func AnimDirection() -> String:
+	if cardinal_direction == Vector2.DOWN:
+		return "down"
+	elif cardinal_direction == Vector2.UP:
+		return "up"
+	else:
+		return "side"
+
 func TakeDamage(_damage: int) -> void:
 	if is_dead:
 		return
@@ -89,10 +116,6 @@ func TakeDamage(_damage: int) -> void:
 	move_timer.stop()
 
 	_disable_damage()
-
-	UpdateAnimation("death")
-
-	await animation_player.animation_finished
 	queue_free()
 
 func _disable_damage() -> void:
@@ -107,11 +130,13 @@ func _disable_damage() -> void:
 	if $HitBox.has_node("CollisionShape2D"):
 		$HitBox/CollisionShape2D.set_deferred("disabled", true)
 
-
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if is_dead:
 		return
+
 	if body is Player:
+		FacePlayer()
+		UpdateAnimation("attack")
 		attack_sound.pitch_scale = randf_range(0.9, 1.1)
 		attack_sound.play()
 		body.TakeDamage(1)
