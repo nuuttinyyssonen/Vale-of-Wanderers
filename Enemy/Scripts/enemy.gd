@@ -1,4 +1,4 @@
-class_name GolbinEnemy
+class_name Enemy
 extends CharacterBody2D
 
 var cardinal_direction: Vector2 = Vector2.DOWN

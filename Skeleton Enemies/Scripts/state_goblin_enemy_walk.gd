@@ -14,10 +14,9 @@ func Process(_delta: float) -> State:
 	if actor.direction == Vector2.ZERO:
 		return idle
 
+	actor.SetDirection()
 	actor.velocity = actor.direction * move_speed
-
-	if actor.SetDirection():
-		actor.UpdateAnimation("walk")
+	actor.UpdateAnimation("walk")
 
 	return null
 

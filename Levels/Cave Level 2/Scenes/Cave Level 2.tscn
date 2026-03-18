@@ -1973,13 +1973,37 @@ shape = SubResource("RectangleShape2D_a6vxr")
 position = Vector2(639, 21)
 
 [node name="Enemy" parent="." unique_id=524650763 instance=ExtResource("9_1jo41")]
-position = Vector2(327, 29)
+position = Vector2(473, 51)
 
 [node name="Enemy2" parent="." unique_id=1916087742 instance=ExtResource("9_1jo41")]
-position = Vector2(369, 53)
+position = Vector2(831, 66)
 
 [node name="Enemy3" parent="." unique_id=957764614 instance=ExtResource("9_1jo41")]
-position = Vector2(242, 70)
+position = Vector2(246, 40)
+
+[node name="Enemy4" parent="." unique_id=346361727 instance=ExtResource("9_1jo41")]
+position = Vector2(850, 390)
+
+[node name="Enemy5" parent="." unique_id=949777682 instance=ExtResource("9_1jo41")]
+position = Vector2(706, 543)
+
+[node name="Enemy6" parent="." unique_id=869189387 instance=ExtResource("9_1jo41")]
+position = Vector2(338, 551)
+
+[node name="Enemy7" parent="." unique_id=924111954 instance=ExtResource("9_1jo41")]
+position = Vector2(166, 459)
+
+[node name="Enemy8" parent="." unique_id=1413405808 instance=ExtResource("9_1jo41")]
+position = Vector2(164, 199)
+
+[node name="Enemy9" parent="." unique_id=261169678 instance=ExtResource("9_1jo41")]
+position = Vector2(847, 214)
+
+[node name="Enemy10" parent="." unique_id=83208609 instance=ExtResource("9_1jo41")]
+position = Vector2(548, 300)
+
+[node name="Enemy11" parent="." unique_id=969620309 instance=ExtResource("9_1jo41")]
+position = Vector2(440, 292)
 
 [node name="Water" type="StaticBody2D" parent="." unique_id=313646491]
 
