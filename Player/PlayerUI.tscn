@@ -47,3 +47,18 @@ stretch_mode = 2
 layout_mode = 2
 texture = SubResource("AtlasTexture_qbo8c")
 stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=515686897]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qbo8c")
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=2048455780]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qbo8c")
+stretch_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/Hearts" unique_id=10771672]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qbo8c")
+stretch_mode = 2

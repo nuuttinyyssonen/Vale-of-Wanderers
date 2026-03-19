@@ -20,12 +20,6 @@ NavigationManager="*uid://1s0ielm5i23y"
 PlayerState="*uid://cvns3blgflowl"
 PlayerManager="*uid://n6bgbyyqcy5h"
 
-[display]
-
-window/size/viewport_width=2560
-window/size/viewport_height=1440
-window/stretch/scale=1.99
-
 [global_group]
 
 player=""

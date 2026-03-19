@@ -35,6 +35,11 @@ func exit() -> void:
 	pass
 
 func Process(_delta: float) -> EnemyState:
+	var player : Player = PlayerManager.player
+	
+	if player == null or not is_instance_valid(player):
+		enemy.velocity = Vector2.ZERO
+		return next_state
 	var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
 	_direction = lerp( _direction, new_dir, turn_rate )
 	enemy.velocity = _direction * chase_speed

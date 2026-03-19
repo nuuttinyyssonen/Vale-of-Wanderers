@@ -6,17 +6,23 @@ var direction : Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var hit_box: HitBox = $HitBox
 
-var current_health: int = 5
-var max_health: int = 5
+var current_health: int = 8
+var max_health: int = 8
 
 signal DirectionChanged(new_direction : Vector2)
+signal player_damaged(hurt_box : HurtBox)
+
+var invulnerable : bool = false
 
 func _ready() -> void:
 	PlayerManager.player = self
 	current_health = PlayerState.current_health
 	PlayerState.health_changed.emit(PlayerState.current_health)
 	state_machine.Initialize(self)
+	hit_box.Damaged.connect(_take_damage)
+	update_hp(5)
 	pass
 
 
@@ -29,12 +35,34 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func TakeDamage(_damage: int) -> void:
-	current_health -= _damage
-	PlayerState.set_health(current_health)
-	if current_health <= 0:
-		queue_free()	
+#func TakeDamage(_damage: int) -> void:
+	#current_health -= _damage
+	#PlayerState.set_health(current_health)
+	#if current_health <= 0:
+		#queue_free()	
 
+func _take_damage(hurt_box : HurtBox) -> void:
+	if invulnerable == true:
+		return
+	update_hp( -hurt_box.damage )
+	PlayerState.set_health(current_health)
+	if current_health > 0:
+		player_damaged.emit(hurt_box)
+	else:
+		queue_free()
+	pass
+
+func update_hp( delta : int ) -> void:
+	current_health = clampi(current_health + delta, 0, max_health)
+	pass
+
+func make_invulnerable(_duration : float = 1.0) -> void:
+	invulnerable = true
+	hit_box.monitoring = false
+	
+	await get_tree().create_timer(_duration).timeout
+	invulnerable = false
+	hit_box.monitoring = true
 
 func SetDirection() -> bool:
 	var new_direction : Vector2 = cardinal_direction

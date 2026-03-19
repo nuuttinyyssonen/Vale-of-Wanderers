@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://jygsdwjk5577"]
 
-[ext_resource type="Script" uid="uid://iopdkani1782" path="res://Skeleton Enemies/Scripts/goblin_enemy_updated.gd" id="1_qcaew"]
-[ext_resource type="Script" uid="uid://bna3jmgtgpci" path="res://GeneralNodes/Hitbox/hit_box.gd" id="2_jysph"]
-[ext_resource type="Texture2D" uid="uid://bj67wxht8t4q" path="res://Skeleton Enemies/sprites/goblin.png" id="3_80ysq"]
-[ext_resource type="Script" uid="uid://daesrrnpxbrj3" path="res://Player/Scripts/player_state_machine.gd" id="4_ko8q3"]
-[ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemy/Audio/hit_player.wav" id="4_qcaew"]
-[ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="5_ko8q3"]
-[ext_resource type="Script" uid="uid://bdd4l71wt7daa" path="res://Skeleton Enemies/Scripts/state_goblin_enemy_walk_updated.gd" id="5_qg82a"]
-[ext_resource type="Script" uid="uid://b7buggdgvmf5d" path="res://Skeleton Enemies/Scripts/state_goblin_enemy_idle_updated.gd" id="6_4a5ip"]
+[ext_resource type="Script" uid="uid://iopdkani1782" path="res://Enemies/Goblin/Scripts/goblin_enemy.gd" id="1_rtaan"]
+[ext_resource type="Script" uid="uid://bna3jmgtgpci" path="res://GeneralNodes/Hitbox/hit_box.gd" id="2_x1yup"]
+[ext_resource type="Texture2D" uid="uid://bj67wxht8t4q" path="res://Enemies/Goblin/sprites/goblin.png" id="3_kc77n"]
+[ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="4_u63mr"]
+[ext_resource type="Script" uid="uid://twtdkm061yqe" path="res://Enemies/Goblin/Scripts/goblin_state_machine.gd" id="5_a6uuw"]
+[ext_resource type="Script" uid="uid://dvqd4w8q3osx8" path="res://Enemies/Goblin/Scripts/states/enemy_state_wander.gd" id="6_450wl"]
+[ext_resource type="Script" uid="uid://c0k6ywi52skem" path="res://Enemies/Goblin/Scripts/states/enemy_state_idle.gd" id="7_tf14s"]
+[ext_resource type="Script" uid="uid://hfhau5vinei8" path="res://Enemies/Goblin/Scripts/states/enemy_state_chase.gd" id="8_prawk"]
+[ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemies/Slime/Audio/hit_player.wav" id="10_ye7wr"]
+[ext_resource type="PackedScene" uid="uid://bnpe5jknq2fra" path="res://Enemies/Goblin/vision_area.tscn" id="11_aw6yo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jd4ap"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vso2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qcaew"]
+radius = 15.0
 
 [sub_resource type="Animation" id="Animation_qg82a"]
 length = 0.001
@@ -27,10 +32,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HurtBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 11)]
+}
 
 [sub_resource type="Animation" id="Animation_4a5ip"]
 resource_name = "attack_down"
-length = 0.4
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,10 +56,22 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [12, 15]
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HurtBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2610334, 0.4007194),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 11), Vector2(0, 11), Vector2(0, 17), Vector2(0, 11)]
 }
 
 [sub_resource type="Animation" id="Animation_exlo5"]
@@ -61,6 +90,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [20, 23]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HurtBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2610334, 0.4007194),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4, 7), Vector2(4, 7), Vector2(14, 7), Vector2(4, 7)]
+}
 
 [sub_resource type="Animation" id="Animation_rvhnv"]
 resource_name = "attack_up"
@@ -77,6 +118,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [16, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/HurtBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2610334, 0.4007194),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -4), Vector2(0, -4), Vector2(0, -10), Vector2(0, -4)]
 }
 
 [sub_resource type="Animation" id="Animation_sov7b"]
@@ -198,21 +251,11 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_vonkd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ypri"]
-radius = 18.027756
 
 [node name="Enemy" type="CharacterBody2D" unique_id=524650763]
-collision_layer = 4
-script = ExtResource("1_qcaew")
-chase_range = null
-chase_update_time = null
-chase_stop_chance = null
-chase_stop_time_min = null
-chase_stop_time_max = null
-wander_stop_chance = null
-wander_time_min = null
-wander_time_max = null
-stop_time_min = null
-stop_time_max = null
+collision_layer = 256
+collision_mask = 17
+script = ExtResource("1_rtaan")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=8780493]
 shape = SubResource("CircleShape2D_jd4ap")
@@ -220,37 +263,52 @@ shape = SubResource("CircleShape2D_jd4ap")
 [node name="HitBox" type="Area2D" parent="." unique_id=1360738221]
 collision_layer = 256
 collision_mask = 0
-script = ExtResource("2_jysph")
+script = ExtResource("2_x1yup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=411361541]
 shape = SubResource("CircleShape2D_vso2s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1756786473]
 scale = Vector2(1.13, 1.13)
-texture = ExtResource("3_80ysq")
+texture = ExtResource("3_kc77n")
 hframes = 8
 vframes = 3
+
+[node name="HurtBox" parent="Sprite2D" unique_id=1609729767 instance=ExtResource("4_u63mr")]
+position = Vector2(0, 11)
+scale = Vector2(0.8849558, 0.8849558)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox" unique_id=1360250399]
+shape = SubResource("CircleShape2D_qcaew")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=398875008]
 libraries/ = SubResource("AnimationLibrary_tmym5")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1396767933]
-script = ExtResource("4_ko8q3")
+[node name="GoblinStateMachine" type="Node" parent="." unique_id=1396767933]
+script = ExtResource("5_a6uuw")
 
-[node name="walk" type="Node" parent="StateMachine" unique_id=1375987107]
-script = ExtResource("5_qg82a")
+[node name="wander" type="Node" parent="GoblinStateMachine" unique_id=1375987107 node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_450wl")
+next_state = NodePath("../idle")
 
-[node name="idle" type="Node" parent="StateMachine" unique_id=161594947]
-script = ExtResource("6_4a5ip")
+[node name="idle" type="Node" parent="GoblinStateMachine" unique_id=161594947 node_paths=PackedStringArray("after_idle_state")]
+script = ExtResource("7_tf14s")
+after_idle_state = NodePath("../wander")
 
-[node name="death" type="Node" parent="StateMachine" unique_id=1374649775]
+[node name="chase" type="Node" parent="GoblinStateMachine" unique_id=59934885 node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
+script = ExtResource("8_prawk")
+vision_area = NodePath("../../VisionArea")
+attack_area = NodePath("../../Sprite2D/HurtBox")
+next_state = NodePath("../idle")
+
+[node name="stun" type="Node" parent="GoblinStateMachine" unique_id=1783586189]
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
-stream = ExtResource("4_qcaew")
+stream = ExtResource("10_ye7wr")
 
 [node name="Interactions" type="Node2D" parent="." unique_id=1106752102]
 
-[node name="HurtBox" parent="Interactions" unique_id=262719249 instance=ExtResource("5_ko8q3")]
+[node name="HurtBox" parent="Interactions" unique_id=262719249 instance=ExtResource("4_u63mr")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox" unique_id=753311656]
 shape = SubResource("CircleShape2D_vonkd")
@@ -260,8 +318,17 @@ debug_color = Color(0.93872005, 0.12288866, 0.3227299, 0.41960785)
 wait_time = 2.0
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=1273054103]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=822075847]
+position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_1ypri")
+
+[node name="VisionArea" parent="." unique_id=1239572986 instance=ExtResource("11_aw6yo")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea" unique_id=1060565573]
+position = Vector2(0, 5)
+polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

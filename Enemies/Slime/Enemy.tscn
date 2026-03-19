@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bdrfgg37akyau"]
 
-[ext_resource type="Texture2D" uid="uid://bmod81blwmwp7" path="res://Enemy/sprites/Slime_Green.png" id="1_3o4wt"]
-[ext_resource type="Script" uid="uid://dnjkj2yggofoj" path="res://Enemy/Scripts/enemy.gd" id="1_vonkd"]
+[ext_resource type="Texture2D" uid="uid://bmod81blwmwp7" path="res://Enemies/Slime/sprites/Slime_Green.png" id="1_3o4wt"]
+[ext_resource type="Script" uid="uid://dnjkj2yggofoj" path="res://Enemies/Slime/Scripts/enemy.gd" id="1_vonkd"]
 [ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="2_epr5s"]
 [ext_resource type="Script" uid="uid://bna3jmgtgpci" path="res://GeneralNodes/Hitbox/hit_box.gd" id="2_jd4ap"]
 [ext_resource type="Script" uid="uid://daesrrnpxbrj3" path="res://Player/Scripts/player_state_machine.gd" id="3_d2k2y"]
-[ext_resource type="Script" uid="uid://ddxxkl3hhfk2q" path="res://Enemy/Scripts/state_enemy_walk.gd" id="4_jd4ap"]
-[ext_resource type="Script" uid="uid://btesxe4b0flpa" path="res://Enemy/Scripts/state_enemy_idle.gd" id="5_1ypri"]
-[ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemy/Audio/hit_player.wav" id="7_1ypri"]
+[ext_resource type="Script" uid="uid://ddxxkl3hhfk2q" path="res://Enemies/Slime/Scripts/state_enemy_walk.gd" id="4_jd4ap"]
+[ext_resource type="Script" uid="uid://btesxe4b0flpa" path="res://Enemies/Slime/Scripts/state_enemy_idle.gd" id="5_1ypri"]
+[ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemies/Slime/Audio/hit_player.wav" id="7_1ypri"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jd4ap"]
 
@@ -94,7 +94,6 @@ radius = 18.027756
 [node name="Enemy" type="CharacterBody2D" unique_id=524650763]
 collision_layer = 4
 script = ExtResource("1_vonkd")
-chase_range = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=8780493]
 shape = SubResource("CircleShape2D_jd4ap")

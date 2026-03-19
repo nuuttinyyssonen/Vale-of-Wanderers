@@ -8,6 +8,8 @@ var is_dead: bool = false
 
 @export var chase_range: float = 300.0
 
+@onready var hit_box: HitBox = $HitBox
+@onready var hurt_box: HurtBox = $Interactions/HurtBox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var move_timer: Timer = $Timer
 @onready var enemy_state_machine: PlayerStateMachine = $StateMachine
@@ -16,13 +18,14 @@ var is_dead: bool = false
 @onready var player: Player = get_tree().get_first_node_in_group("player") as Player
 
 signal DirectionChanged(new_direction: Vector2)
+signal enemy_damaged(hurt_box: HurtBox)
 
 func _ready() -> void:
 	enemy_state_machine.Initialize(self)
 	randomize()
 	move_timer.timeout.connect(_on_move_timer_timeout)
 	_on_move_timer_timeout()
-	$HitBox.Damaged.connect( TakeDamage )
+	hit_box.Damaged.connect( TakeDamage )
 
 func _physics_process(_delta: float) -> void:
 	if is_dead:
@@ -80,10 +83,10 @@ func SetDirection() -> bool:
 func UpdateAnimation(state: String) -> void:
 	animation_player.play(state)
 	
-func TakeDamage(_damage: int) -> void:
+func TakeDamage(hurt_box: HurtBox) -> void:
 	if is_dead:
 		return
-
+	enemy_damaged.emit(hit_box)
 	is_dead = true
 	velocity = Vector2.ZERO
 	move_timer.stop()
@@ -114,4 +117,4 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		attack_sound.pitch_scale = randf_range(0.9, 1.1)
 		attack_sound.play()
-		body.TakeDamage(1)
+		body._take_damage(hurt_box)

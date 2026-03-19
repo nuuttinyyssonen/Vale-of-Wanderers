@@ -1,7 +1,7 @@
 class_name GoblinEnemy extends CharacterBody2D 
 
 signal direction_changed( new_direction : Vector2 )
-signal enemy_damaged()
+signal enemy_damaged(hurt_box : HurtBox)
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
@@ -57,9 +57,8 @@ func AnimDirection() -> String:
 	else:
 		return "side"
 
-func _take_damage(damage: int) -> void:
-	print("enemy took damage")
-	hp -= damage
-	enemy_damaged.emit()
+func _take_damage(hurt_box : HurtBox) -> void:
+	hp -= hurt_box.damage
+	enemy_damaged.emit(hurt_box)
 	if hp == 0:
 		queue_free()

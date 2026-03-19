@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cpcx8ed4j7eny" path="res://Levels/Cave Level 1/Scripts/cave.gd" id="1_4v1c7"]
 [ext_resource type="Texture2D" uid="uid://bbmo60y5mbsjd" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/ground-tiles-32x32.png" id="2_dt1wx"]
 [ext_resource type="Texture2D" uid="uid://dar6s7xq4xr0k" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/wall-tiles-32x32.png" id="3_vrmid"]
-[ext_resource type="PackedScene" uid="uid://bdrfgg37akyau" path="res://Enemy/Enemy.tscn" id="4_hglgo"]
+[ext_resource type="PackedScene" uid="uid://bdrfgg37akyau" path="res://Enemies/Slime/Enemy.tscn" id="4_hglgo"]
 [ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="5_2i2bt"]
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="6_jucdy"]
 [ext_resource type="Texture2D" uid="uid://8w6yyk168jm5" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/assets-all.png" id="7_dvmy6"]

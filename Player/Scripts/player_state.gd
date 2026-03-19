@@ -2,8 +2,8 @@ extends Node
 
 signal health_changed(current_health)
 
-var max_health: int = 5
-var current_health: int = 5
+var max_health: int = 8
+var current_health: int = 8
 
 func set_health(value: int) -> void:
 	current_health = clamp(value, 0, max_health)

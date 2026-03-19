@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnpe5jknq2fra"]
 
-[ext_resource type="Script" uid="uid://b8rsoo0k27ua6" path="res://Enemies/Scripts/vision_area.gd" id="1_gvod7"]
+[ext_resource type="Script" uid="uid://b8rsoo0k27ua6" path="res://Enemies/Goblin/Scripts/vision_area.gd" id="1_gvod7"]
 
 [node name="VisionArea" type="Area2D" unique_id=1239572986]
 collision_layer = 0

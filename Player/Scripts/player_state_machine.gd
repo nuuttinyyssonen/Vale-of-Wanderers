@@ -27,10 +27,18 @@ func Initialize(_actor: CharacterBody2D) -> void:
 		if c is State:
 			c.actor = _actor
 			states.append(c)
+	
+	if states.size() == 0:
+		return
+	
+	states[0].actor = _actor
+	states[0].state_machine = self
+	
+	for state in states:
+		state.init()
 
-	if states.size() > 0:
-		ChangeState(states[0])
-		process_mode = Node.PROCESS_MODE_INHERIT
+	ChangeState(states[0])
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func ChangeState(new_state: State) -> void:
 	if new_state == null or new_state == current_state:
