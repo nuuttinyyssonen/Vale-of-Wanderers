@@ -1,4 +1,5 @@
 class_name HurtBox extends Area2D
+@onready var attack_sound: AudioStreamPlayer2D = $"../../AttackSound"
 
 @export var damage : int = 1
 
@@ -16,3 +17,5 @@ func _process(_delta: float) -> void:
 func AreaEntered( a : Area2D ) -> void:
 	if a is HitBox:
 		a.TakeDamage( self )
+		attack_sound.pitch_scale = randf_range(0.9, 1.1)
+		attack_sound.play()

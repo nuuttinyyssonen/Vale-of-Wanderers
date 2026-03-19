@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dvqd4w8q3osx8" path="res://Enemies/Goblin/Scripts/states/enemy_state_wander.gd" id="6_450wl"]
 [ext_resource type="Script" uid="uid://c0k6ywi52skem" path="res://Enemies/Goblin/Scripts/states/enemy_state_idle.gd" id="7_tf14s"]
 [ext_resource type="Script" uid="uid://hfhau5vinei8" path="res://Enemies/Goblin/Scripts/states/enemy_state_chase.gd" id="8_prawk"]
+[ext_resource type="Script" uid="uid://dbboq80ml1f5h" path="res://Enemies/Goblin/Scripts/states/enemy_state_stun.gd" id="9_rtaan"]
 [ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemies/Slime/Audio/hit_player.wav" id="10_ye7wr"]
 [ext_resource type="PackedScene" uid="uid://bnpe5jknq2fra" path="res://Enemies/Goblin/vision_area.tscn" id="11_aw6yo"]
 
@@ -252,6 +253,90 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ypri"]
 
+[sub_resource type="Animation" id="Animation_rtaan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u63mr"]
+resource_name = "damaged_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2009872, 0.3018268, 0.3976207, 0.4987365, 0.599092, 0.700968, 0.8005633),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a6uuw"]
+resource_name = "damaged_side"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2009872, 0.3018268, 0.3976207, 0.4987365, 0.599092, 0.700968, 0.8005633),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x1yup"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2009872, 0.3018268, 0.3976207, 0.4987365, 0.599092, 0.700968, 0.8005633),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kc77n"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u63mr"]
+_data = {
+&"RESET": SubResource("Animation_rtaan"),
+&"damaged_down": SubResource("Animation_u63mr"),
+&"damaged_side": SubResource("Animation_a6uuw"),
+&"damaged_up": SubResource("Animation_x1yup"),
+&"default": SubResource("Animation_kc77n")
+}
+
 [node name="Enemy" type="CharacterBody2D" unique_id=524650763]
 collision_layer = 256
 collision_mask = 17
@@ -301,7 +386,9 @@ vision_area = NodePath("../../VisionArea")
 attack_area = NodePath("../../Sprite2D/HurtBox")
 next_state = NodePath("../idle")
 
-[node name="stun" type="Node" parent="GoblinStateMachine" unique_id=1783586189]
+[node name="stun" type="Node" parent="GoblinStateMachine" unique_id=1783586189 node_paths=PackedStringArray("next_state")]
+script = ExtResource("9_rtaan")
+next_state = NodePath("../idle")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
 stream = ExtResource("10_ye7wr")
@@ -330,5 +417,8 @@ shape = SubResource("CircleShape2D_1ypri")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea" unique_id=1060565573]
 position = Vector2(0, 5)
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1101235293]
+libraries/ = SubResource("AnimationLibrary_u63mr")
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

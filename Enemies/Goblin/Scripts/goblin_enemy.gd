@@ -13,6 +13,7 @@ var player : Player
 var invulnerable : bool = false
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var hit_box : HitBox = $HitBox
 @onready var state_machine : GoblinStateMachine = $GoblinStateMachine
@@ -47,6 +48,10 @@ func SetDirection(_new_direction) -> bool:
 
 func UpdateAnimation(state : String) -> void:
 	animation_player.play(state + "_" + AnimDirection())
+	pass
+
+func UpdateStunAnimation(state : String) -> void:
+	effect_animation_player.play(state + "_" + AnimDirection())
 	pass
 
 func AnimDirection() -> String:
