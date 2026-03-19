@@ -431,9 +431,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
-radius = 25.0
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7tob"]
+radius = 20.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1100355087 groups=["player"]]
 position = Vector2(588, 312)
@@ -506,5 +507,6 @@ offset_bottom = -297.0
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=421532621]
+position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_p7tob")
 debug_color = Color(0.7490932, 0.46078074, 0, 0.41960785)

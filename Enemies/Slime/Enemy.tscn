@@ -131,6 +131,7 @@ stream = ExtResource("7_1ypri")
 [node name="Interactions" type="Node2D" parent="." unique_id=1106752102]
 
 [node name="HurtBox" parent="Interactions" unique_id=262719249 instance=ExtResource("2_epr5s")]
+attack_sound = ExtResource("7_1ypri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox" unique_id=753311656]
 shape = SubResource("CircleShape2D_vonkd")

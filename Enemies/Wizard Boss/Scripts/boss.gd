@@ -22,6 +22,7 @@ var current_index: int = 0
 signal enemy_damaged(hurt_box : HurtBox)
 
 func _ready() -> void:
+	randomize()
 	player = PlayerManager.player
 	positions = [up_pos, left_pos, down_pos, right_pos]
 
@@ -32,9 +33,9 @@ func _ready() -> void:
 	current_index = 0
 	global_position = positions[current_index].global_position
 	_play_location_animation(current_index)
-
+	await get_tree().create_timer(2.0).timeout
+	
 	_shoot_orb.call_deferred()
-
 	shoot_timer.start()
 	hit_box.Damaged.connect( _take_damage )
 
@@ -42,9 +43,7 @@ func _on_shoot_timer_timeout() -> void:
 	visible = false
 	await get_tree().create_timer(0.15).timeout
 
-	current_index += 1
-	if current_index >= positions.size():
-		current_index = 0
+	current_index = randi() % positions.size()
 
 	global_position = positions[current_index].global_position
 	_play_location_animation(current_index)
@@ -62,35 +61,21 @@ func _play_location_animation(index: int) -> void:
 			sprite_2d.flip_h = false
 		2:
 			animation_player.play("idle_up")
-			sprite_2d.flip_h = true
+			sprite_2d.flip_h = false
 		3:
 			animation_player.play("idle_side")
-			sprite_2d.flip_h = false
+			sprite_2d.flip_h = true
 
 func _shoot_orb() -> void:
-	if energy_orb_scene == null:
-		print("Boss: energy_orb_scene is not assigned")
-		return
+	var base_dir: Vector2 = global_position.direction_to(player.global_position)
+	var angles := [-15.0, -5.0, 5.0, 15.0]
 
-	if not is_instance_valid(player):
-		print("Boss: player is not valid")
-		return
-
-	var orb: EnergyOrb = energy_orb_scene.instantiate() as EnergyOrb
-	if orb == null:
-		print("Boss: orb could not be instantiated as EnergyOrb")
-		return
-
-	var dir: Vector2 = global_position.direction_to(player.global_position)
-
-	orb.global_position = global_position + dir * 16.0
-	orb.set_direction(dir)
-
-	get_parent().add_child(orb)
-
-	print("Boss global: ", global_position)
-	print("Marker global: ", positions[current_index].global_position)
-	print("Boss shot orb toward ", dir)
+	for angle_deg in angles:
+		var dir := base_dir.rotated(deg_to_rad(angle_deg))
+		var orb: EnergyOrb = energy_orb_scene.instantiate() as EnergyOrb
+		orb.global_position = global_position + dir * 16.0
+		orb.set_direction(dir)
+		get_parent().add_child(orb)
 
 func _take_damage(hurt_box : HurtBox) -> void:
 	hp -= hurt_box.damage
