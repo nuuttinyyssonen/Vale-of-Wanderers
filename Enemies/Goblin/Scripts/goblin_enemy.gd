@@ -66,4 +66,5 @@ func _take_damage(hurt_box : HurtBox) -> void:
 	hp -= hurt_box.damage
 	enemy_damaged.emit(hurt_box)
 	if hp == 0:
+		GameManager.set_enemies_killed()
 		queue_free()

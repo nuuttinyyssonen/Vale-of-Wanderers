@@ -3,6 +3,8 @@ extends Node2D
 @onready var player = $Player
 
 func _ready() -> void:
+	GameManager.spawn_player()
+	PlayerState.respawn()
 	if NavigationManager.spawn_door_tag == "":
 		return
 

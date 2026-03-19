@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b2ikt5jg5qbiq" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/stones.png" id="4_dgf02"]
 [ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="4_gqkei"]
 [ext_resource type="Script" uid="uid://c2lk536l5lom7" path="res://Levels/Cave Level 2/Scripts/key.gd" id="5_23xfs"]
+[ext_resource type="PackedScene" uid="uid://37cldwvunf3y" path="res://GeneralNodes/UI/Scenes/deathScreen.tscn" id="5_a6vxr"]
 [ext_resource type="Script" uid="uid://ecpimnqkclwq" path="res://Levels/Cave Level 2/Scripts/gate.gd" id="5_dgf02"]
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="5_e02ih"]
 [ext_resource type="PackedScene" uid="uid://jygsdwjk5577" path="res://Enemies/Goblin/Goblin Enemy.tscn" id="9_1jo41"]
+[ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://GeneralNodes/UI/Scenes/timer.tscn" id="11_7srpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5weqc"]
 texture = ExtResource("1_qd0b0")
@@ -1858,6 +1860,11 @@ shape = SubResource("CircleShape2D_leo1k")
 
 [node name="PlayerUi" parent="." unique_id=997963239 instance=ExtResource("5_e02ih")]
 
+[node name="DeathUI" parent="." unique_id=1964236601 instance=ExtResource("5_a6vxr")]
+visible = false
+offset = Vector2(450, 300)
+transform = Transform2D(1, 0, 0, 1, 450, 300)
+
 [node name="Ladders" type="Sprite2D" parent="." unique_id=2027775706]
 position = Vector2(497.00006, 270)
 scale = Vector2(0.55128217, 0.6428567)
@@ -2014,5 +2021,7 @@ polygon = PackedVector2Array(541, 510, 541, 411, 636, 412, 638, 378, 669, 377, 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map" unique_id=1657224042]
 polygon = PackedVector2Array(860, 537, 859, 577, 164, 582, 164, 538, 131, 537, 131, 95, 161, 96, 163, 65, 194, 64, 194, -1, 572, -2, 610, -2, 611, -71, 673, -72, 676, -2, 829, 0, 828, 30, 893, 31, 895, 538, 861, 537, 1312, 934, 1345, -353, -320, -345, -334, 982, 997, 979)
+
+[node name="Timer" parent="." unique_id=551605206 instance=ExtResource("11_7srpn")]
 
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]

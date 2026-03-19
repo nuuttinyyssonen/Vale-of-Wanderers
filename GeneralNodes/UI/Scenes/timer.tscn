@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqdku0qadsguo"]
+
+[ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="1_h115x"]
+[ext_resource type="Script" uid="uid://hrle7osqhduq" path="res://GeneralNodes/UI/Scripts/timer_label.gd" id="1_ke55t"]
+[ext_resource type="Script" uid="uid://dqr13cvjan5cm" path="res://GeneralNodes/UI/Scripts/enemiesKilledLabel.gd" id="3_eavvk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ke55t"]
+font = ExtResource("1_h115x")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_h115x"]
+font = ExtResource("1_h115x")
+font_size = 25
+
+[node name="Timer" type="CanvasLayer" unique_id=551605206]
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1489050969]
+offset_left = 1419.0
+offset_top = 47.0
+offset_right = 1459.0
+offset_bottom = 70.0
+label_settings = SubResource("LabelSettings_ke55t")
+script = ExtResource("1_ke55t")
+
+[node name="EnemiesKilled" type="Label" parent="." unique_id=675461289]
+offset_left = 1421.0
+offset_top = 80.0
+offset_right = 1564.0
+offset_bottom = 106.0
+text = "Enemies Killed: "
+label_settings = SubResource("LabelSettings_h115x")
+script = ExtResource("3_eavvk")

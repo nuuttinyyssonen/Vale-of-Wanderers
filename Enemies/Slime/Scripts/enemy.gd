@@ -96,6 +96,7 @@ func TakeDamage(_hurt_box: HurtBox) -> void:
 	UpdateAnimation("death")
 
 	await animation_player.animation_finished
+	GameManager.set_enemies_killed()
 	queue_free()
 
 func _disable_damage() -> void:

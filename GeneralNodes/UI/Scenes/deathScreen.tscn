@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://37cldwvunf3y"]
+
+[ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="1_d0h4m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l7k4a"]
+font = ExtResource("1_d0h4m")
+
+[node name="DeathUI" type="CanvasLayer" unique_id=1964236601]
+
+[node name="Label" type="Label" parent="." unique_id=1743612772]
+offset_left = 391.0
+offset_top = 138.0
+offset_right = 460.0
+offset_bottom = 161.0
+text = "You Died"
+label_settings = SubResource("LabelSettings_l7k4a")

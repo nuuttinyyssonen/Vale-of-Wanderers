@@ -84,7 +84,7 @@ _data = {
 size = Vector2(45.5, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey4k8"]
-size = Vector2(45, 40)
+size = Vector2(28, 29)
 
 [sub_resource type="Animation" id="Animation_rtaan"]
 length = 0.001
@@ -170,6 +170,9 @@ _data = {
 &"default": SubResource("Animation_kc77n")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ga20"]
+size = Vector2(28, 30)
+
 [node name="Boss" type="CharacterBody2D" unique_id=1006338385]
 position = Vector2(-1, 3)
 script = ExtResource("1_dy3ks")
@@ -195,8 +198,12 @@ shape = SubResource("RectangleShape2D_g7f70")
 [node name="HurtBox" parent="." unique_id=262719249 instance=ExtResource("5_8ga20")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1475600013]
-position = Vector2(-0.5, 10)
+position = Vector2(1, 4.5)
 shape = SubResource("RectangleShape2D_ey4k8")
 
 [node name="EffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2041514564]
 libraries/ = SubResource("AnimationLibrary_8ga20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1083289743]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_8ga20")

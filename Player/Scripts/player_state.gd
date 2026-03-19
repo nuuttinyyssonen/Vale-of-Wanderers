@@ -14,3 +14,6 @@ func damage(amount: int) -> void:
 
 func heal(amount: int) -> void:
 	set_health(current_health + amount)
+
+func respawn() -> void:
+	set_health(max_health)

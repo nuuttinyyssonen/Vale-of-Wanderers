@@ -10,6 +10,7 @@ var direction : Vector2 = Vector2.ZERO
 
 var current_health: int = 8
 var max_health: int = 8
+var is_dead : bool = false
 
 signal DirectionChanged(new_direction : Vector2)
 signal player_damaged(hurt_box : HurtBox)
@@ -27,6 +28,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if is_dead:
+		return
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	pass
@@ -49,7 +52,10 @@ func _take_damage(hurt_box : HurtBox) -> void:
 	if current_health > 0:
 		player_damaged.emit(hurt_box)
 	else:
-		queue_free()
+		is_dead = true
+		set_physics_process(false)
+		set_process(false)
+		GameManager.player_died()
 	pass
 
 func update_hp( delta : int ) -> void:
