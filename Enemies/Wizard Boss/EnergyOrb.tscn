@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b2afggk4604bn"]
+
+[ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="1_52fsc"]
+[ext_resource type="Script" uid="uid://bwpknk1ptcf1e" path="res://Enemies/Wizard Boss/Scripts/energy_orb.gd" id="1_nskur"]
+[ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemies/Slime/Audio/hit_player.wav" id="2_sglfq"]
+
+[sub_resource type="Gradient" id="Gradient_sglfq"]
+offsets = PackedFloat32Array(0.19626169, 0.43613708, 0.81619936, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.87480974, 0.07657248, 0.86196995, 1, 0.33331463, 0.06592276, 0.69047856, 1, 0.60681844, 0.0015257448, 0.7774444, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nskur"]
+gradient = SubResource("Gradient_sglfq")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbram"]
+radius = 11.0
+
+[node name="EnergyOrb" type="Node2D" unique_id=498108152]
+script = ExtResource("1_nskur")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1879025783]
+texture = SubResource("GradientTexture2D_nskur")
+
+[node name="HurtBox" parent="." unique_id=262719249 instance=ExtResource("1_52fsc")]
+attack_sound = ExtResource("2_sglfq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1532575694]
+shape = SubResource("CircleShape2D_jbram")
+debug_color = Color(0.94514185, 0.03266682, 0.5809608, 0.41960785)
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=938620204]
+stream = ExtResource("2_sglfq")

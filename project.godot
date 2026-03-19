@@ -20,6 +20,10 @@ NavigationManager="*uid://1s0ielm5i23y"
 PlayerState="*uid://cvns3blgflowl"
 PlayerManager="*uid://n6bgbyyqcy5h"
 
+[display]
+
+window/stretch/scale=0.9
+
 [global_group]
 
 player=""

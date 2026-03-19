@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://dy438ivx3eyw5"]
+
+[ext_resource type="Script" uid="uid://bkyuw6bn3yojg" path="res://Enemies/Wizard Boss/Scripts/boss.gd" id="1_dy3ks"]
+[ext_resource type="Texture2D" uid="uid://0ulhnrnv3sbn" path="res://Enemies/Wizard Boss/Sprites/boss-cloak.png" id="1_yartr"]
+[ext_resource type="PackedScene" uid="uid://b7bm1rsn0vhhu" path="res://GeneralNodes/Hitbox/hit_box.tscn" id="3_g7f70"]
+[ext_resource type="PackedScene" uid="uid://b2afggk4604bn" path="res://Enemies/Wizard Boss/EnergyOrb.tscn" id="4_g7f70"]
+[ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="5_8ga20"]
+
+[sub_resource type="Animation" id="Animation_1lhmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dy3ks"]
+resource_name = "idle_down"
+length = 0.55
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_g7f70"]
+resource_name = "idle_side"
+length = 0.55
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_8ga20"]
+resource_name = "idle_up"
+length = 0.55
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ey4k8"]
+_data = {
+&"RESET": SubResource("Animation_1lhmf"),
+&"idle_down": SubResource("Animation_dy3ks"),
+&"idle_side": SubResource("Animation_g7f70"),
+&"idle_up": SubResource("Animation_8ga20")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7f70"]
+size = Vector2(45.5, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey4k8"]
+size = Vector2(45, 40)
+
+[sub_resource type="Animation" id="Animation_rtaan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u63mr"]
+resource_name = "damaged_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2009872, 0.3018268, 0.3976207, 0.4987365, 0.599092, 0.700968, 0.8005633),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a6uuw"]
+resource_name = "damaged_side"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2009872, 0.3018268, 0.3976207, 0.4987365, 0.599092, 0.700968, 0.8005633),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x1yup"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2009872, 0.3018268, 0.3976207, 0.4987365, 0.599092, 0.700968, 0.8005633),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5882353), Color(1, 1, 1, 1), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kc77n"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ga20"]
+_data = {
+&"RESET": SubResource("Animation_rtaan"),
+&"damaged_down": SubResource("Animation_u63mr"),
+&"damaged_side": SubResource("Animation_a6uuw"),
+&"damaged_up": SubResource("Animation_x1yup"),
+&"default": SubResource("Animation_kc77n")
+}
+
+[node name="Boss" type="CharacterBody2D" unique_id=1006338385]
+position = Vector2(-1, 3)
+script = ExtResource("1_dy3ks")
+energy_orb_scene = ExtResource("4_g7f70")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1398063956]
+position = Vector2(1, -2)
+texture = ExtResource("1_yartr")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2024333543]
+libraries/ = SubResource("AnimationLibrary_ey4k8")
+
+[node name="HitBox" parent="." unique_id=616169720 instance=ExtResource("3_g7f70")]
+position = Vector2(-2, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1230291113]
+position = Vector2(2.25, 11.5)
+shape = SubResource("RectangleShape2D_g7f70")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1790761086]
+
+[node name="HurtBox" parent="." unique_id=262719249 instance=ExtResource("5_8ga20")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1475600013]
+position = Vector2(-0.5, 10)
+shape = SubResource("RectangleShape2D_ey4k8")
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="." unique_id=2041514564]
+libraries/ = SubResource("AnimationLibrary_8ga20")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://biaupdou10ai8"
+path="res://.godot/imported/boss_destroy.wav-92336a820bf62d9bf83b937a82577267.sample"
+
+[deps]
+
+source_file="res://Enemies/Wizard Boss/Audio/boss_destroy.wav"
+dest_files=["res://.godot/imported/boss_destroy.wav-92336a820bf62d9bf83b937a82577267.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

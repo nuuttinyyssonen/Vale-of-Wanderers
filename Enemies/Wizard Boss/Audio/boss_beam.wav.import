@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhal1c5ubfnrl"
+path="res://.godot/imported/boss_beam.wav-238d0c7d9ebbc44e03fb70720af7dd74.sample"
+
+[deps]
+
+source_file="res://Enemies/Wizard Boss/Audio/boss_beam.wav"
+dest_files=["res://.godot/imported/boss_beam.wav-238d0c7d9ebbc44e03fb70720af7dd74.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
