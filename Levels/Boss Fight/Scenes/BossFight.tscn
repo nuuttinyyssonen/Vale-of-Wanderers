@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c0fotsou4a5cm" path="res://Enemies/Wizard Boss/Scripts/ending_ui.gd" id="4_gsx07"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="4_to8bd"]
 [ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="5_im8ja"]
+[ext_resource type="AudioStream" uid="uid://brwxeohbbtmr1" path="res://Assets/boss_fight.ogg" id="7_haxba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to8bd"]
 texture = ExtResource("1_im8ja")
@@ -570,3 +571,8 @@ label_settings = SubResource("LabelSettings_im8ja")
 layout_mode = 2
 text = "Main Menu
 "
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1582950829]
+stream = ExtResource("7_haxba")
+volume_db = -12.905
+bus = &"Music"

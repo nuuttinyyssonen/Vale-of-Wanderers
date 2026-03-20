@@ -127,6 +127,7 @@ script = ExtResource("5_1ypri")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
 stream = ExtResource("7_1ypri")
+bus = &"SFX"
 
 [node name="Interactions" type="Node2D" parent="." unique_id=1106752102]
 

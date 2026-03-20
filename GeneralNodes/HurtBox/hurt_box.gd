@@ -8,6 +8,7 @@ class_name HurtBox extends Area2D
 func _ready() -> void:
 	add_child(player)
 	player.stream = attack_sound
+	player.bus = "SFX"
 	area_entered.connect(AreaEntered)
 
 

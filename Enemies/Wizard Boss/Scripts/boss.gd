@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var kill_label: Label = $"../EndingUI/VBoxContainer/KillLabel"
 @onready var time_label: Label = $"../EndingUI/VBoxContainer/TimeLabel"
 @onready var ending_ui: CanvasLayer = $"../EndingUI"
+@onready var music_player: AudioStreamPlayer2D = $"../MusicPlayer"
 
 var player: CharacterBody2D
 var positions: Array[Marker2D] = []
@@ -26,6 +27,8 @@ var current_index: int = 0
 signal enemy_damaged(hurt_box : HurtBox)
 
 func _ready() -> void:
+	if not music_player.playing:
+		music_player.play()
 	randomize()
 	player = PlayerManager.player
 	positions = [up_pos, left_pos, down_pos, right_pos]

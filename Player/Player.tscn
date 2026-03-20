@@ -435,8 +435,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
 radius = 30.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p7tob"]
-radius = 20.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mea3"]
+radius = 12.0
+height = 40.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1100355087 groups=["player"]]
 position = Vector2(588, 312)
@@ -480,6 +481,7 @@ script = ExtResource("8_p7tob")
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1776351348]
 stream = ExtResource("8_s1rgi")
 max_polyphony = 4
+bus = &"SFX"
 
 [node name="Interactions" type="Node2D" parent="." unique_id=2038653847]
 rotation = -1.5707964
@@ -510,7 +512,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=421532621]
 position = Vector2(0, -15)
-shape = SubResource("CircleShape2D_p7tob")
+shape = SubResource("CapsuleShape2D_3mea3")
 debug_color = Color(0.7490932, 0.46078074, 0, 0.41960785)
 
 [node name="Timer" parent="." unique_id=551605206 instance=ExtResource("14_3mea3")]

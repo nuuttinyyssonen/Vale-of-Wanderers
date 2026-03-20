@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bdvhmh138oawi"]
+
+[ext_resource type="Script" uid="uid://dd3ybwghed70x" path="res://Player/Scripts/player_options.gd" id="1_8wfms"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yxgy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 17
+
+[node name="Options" type="CanvasLayer" unique_id=1026878104]
+script = ExtResource("1_8wfms")
+
+[node name="OptionsPanel" type="VBoxContainer" parent="." unique_id=1311343669]
+offset_left = 399.0
+offset_top = 237.0
+offset_right = 756.0
+offset_bottom = 332.0
+
+[node name="MusicSliderText" type="Label" parent="OptionsPanel" unique_id=633144283]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel" unique_id=1238170950]
+layout_mode = 2
+
+[node name="SFXSliderText" type="Label" parent="OptionsPanel" unique_id=1992595754]
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="OptionsPanel" unique_id=1843697211]
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="OptionsPanel" unique_id=301736181]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8yxgy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8yxgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8yxgy")
+text = "Quit"
+
+[node name="ResumeButton" type="Button" parent="OptionsPanel" unique_id=1558774760]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8yxgy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8yxgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8yxgy")
+text = "Resume"
+
+[connection signal="pressed" from="OptionsPanel/MainMenu" to="OptionsPanel" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="OptionsPanel/ResumeButton" to="." method="_on_resume_button_pressed"]

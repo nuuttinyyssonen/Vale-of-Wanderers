@@ -15,6 +15,10 @@ func reset_timer_and_kills() -> void:
 func _process(delta: float) -> void:
 	if timer_running:
 		elapsed_time += delta
+	if Input.is_action_just_pressed("pause_menu"):
+		var options_menu = get_tree().current_scene.get_node_or_null("OptionsMenu")
+		if options_menu:
+			options_menu.toggle()
 
 func get_time_string() -> String:
 	var total_seconds := int(elapsed_time)
@@ -69,8 +73,8 @@ func get_final_score() -> Dictionary:
 	var total_score = time_score + kill_score
 
 	return {
-		"time_score": time_score,
-		"kill_score": kill_score,
+		"time_score": elapsed_time,
+		"kill_score": enemiesKilled,
 		"total_score": total_score
 	}
 

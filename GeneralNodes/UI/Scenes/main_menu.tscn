@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cborkl0idtydp" path="res://GeneralNodes/UI/Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://ssbar73ejqiu" path="res://Assets/background.PNG" id="2_ce3w2"]
 [ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="3_n45e2"]
+[ext_resource type="AudioStream" uid="uid://cwx3genax6rqg" path="res://Assets/title_screen.ogg" id="4_hojli"]
+[ext_resource type="Script" uid="uid://do60fbh2o7t2j" path="res://GeneralNodes/UI/Scripts/options_panel.gd" id="5_gjwe1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("2_ce3w2")
@@ -93,6 +95,47 @@ theme_override_fonts/font = ExtResource("3_n45e2")
 theme_override_font_sizes/font_size = 80
 text = "Vale of Wanderers"
 
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=255811024]
+stream = ExtResource("4_hojli")
+volume_db = -8.825
+bus = &"Music"
+
+[node name="OptionsPanel" type="VBoxContainer" parent="." unique_id=1547622775]
+visible = false
+layout_mode = 0
+offset_left = 399.0
+offset_top = 237.0
+offset_right = 756.0
+offset_bottom = 332.0
+script = ExtResource("5_gjwe1")
+
+[node name="MusicSliderText" type="Label" parent="OptionsPanel" unique_id=124430901]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="OptionsPanel" unique_id=205852614]
+layout_mode = 2
+
+[node name="SFXSliderText" type="Label" parent="OptionsPanel" unique_id=83668701]
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SfxSlider" type="HSlider" parent="OptionsPanel" unique_id=2046483802]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="OptionsPanel" unique_id=225987032]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhts7")
+text = "Back to main menu"
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="OptionsPanel/BackButton" to="." method="_on_back_button_pressed"]

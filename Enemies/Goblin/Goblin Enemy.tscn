@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://c0k6ywi52skem" path="res://Enemies/Goblin/Scripts/states/enemy_state_idle.gd" id="7_tf14s"]
 [ext_resource type="Script" uid="uid://hfhau5vinei8" path="res://Enemies/Goblin/Scripts/states/enemy_state_chase.gd" id="8_prawk"]
 [ext_resource type="Script" uid="uid://dbboq80ml1f5h" path="res://Enemies/Goblin/Scripts/states/enemy_state_stun.gd" id="9_rtaan"]
-[ext_resource type="AudioStream" uid="uid://cc2qcragewc5k" path="res://Enemies/Slime/Audio/hit_player.wav" id="10_ye7wr"]
+[ext_resource type="AudioStream" uid="uid://cvklvttyccjyy" path="res://Enemies/Goblin/Audio/hit_00 (3).wav" id="10_rtaan"]
 [ext_resource type="PackedScene" uid="uid://bnpe5jknq2fra" path="res://Enemies/Goblin/vision_area.tscn" id="11_aw6yo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jd4ap"]
@@ -391,11 +391,12 @@ script = ExtResource("9_rtaan")
 next_state = NodePath("../idle")
 
 [node name="AttackSound" type="AudioStreamPlayer2D" parent="." unique_id=1728369454]
-stream = ExtResource("10_ye7wr")
+stream = ExtResource("10_rtaan")
 
 [node name="Interactions" type="Node2D" parent="." unique_id=1106752102]
 
 [node name="HurtBox" parent="Interactions" unique_id=262719249 instance=ExtResource("4_u63mr")]
+attack_sound = ExtResource("10_rtaan")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/HurtBox" unique_id=753311656]
 shape = SubResource("CircleShape2D_vonkd")

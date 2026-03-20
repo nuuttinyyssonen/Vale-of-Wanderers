@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dc6p2exwv1j05" path="res://Props/Plants/plant.tscn" id="14_m1ubd"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="15_evj8f"]
 [ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://Player/timer.tscn" id="16_0cj8i"]
+[ext_resource type="PackedScene" uid="uid://bdvhmh138oawi" path="res://Player/Options.tscn" id="17_c6qhe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
 texture = ExtResource("2_a636d")
@@ -628,5 +629,7 @@ position = Vector2(1, 38)
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1432007282]
 
 [node name="Timer" parent="." unique_id=551605206 instance=ExtResource("16_0cj8i")]
+
+[node name="OptionsMenu" parent="." unique_id=1026878104 instance=ExtResource("17_c6qhe")]
 
 [editable path="Doors/CaveEntrance"]
