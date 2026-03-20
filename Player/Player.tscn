@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c5lyp8kudssxn" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="9_j23h2"]
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="11_v0k0e"]
 [ext_resource type="PackedScene" uid="uid://b7bm1rsn0vhhu" path="res://GeneralNodes/Hitbox/hit_box.tscn" id="12_5wa8t"]
+[ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://Player/timer.tscn" id="14_3mea3"]
+[ext_resource type="PackedScene" uid="uid://37cldwvunf3y" path="res://Player/deathScreen.tscn" id="15_7v5gs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
 
@@ -510,3 +512,8 @@ collision_layer = 2
 position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_p7tob")
 debug_color = Color(0.7490932, 0.46078074, 0, 0.41960785)
+
+[node name="Timer" parent="." unique_id=551605206 instance=ExtResource("14_3mea3")]
+
+[node name="DeathUI" parent="." unique_id=1964236601 instance=ExtResource("15_7v5gs")]
+visible = false

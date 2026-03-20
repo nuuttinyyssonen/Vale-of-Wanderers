@@ -7,13 +7,17 @@ extends CharacterBody2D
 @export var left_pos: Marker2D
 @export var down_pos: Marker2D
 @export var right_pos: Marker2D
-@export var hp : int = 30
+@export var hp : int = 3
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var hit_box: HitBox = $HitBox
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
+@onready var score_label: Label = $"../EndingUI/VBoxContainer/ScoreLabel"
+@onready var kill_label: Label = $"../EndingUI/VBoxContainer/KillLabel"
+@onready var time_label: Label = $"../EndingUI/VBoxContainer/TimeLabel"
+@onready var ending_ui: CanvasLayer = $"../EndingUI"
 
 var player: CharacterBody2D
 var positions: Array[Marker2D] = []
@@ -85,3 +89,11 @@ func _take_damage(hurt_box : HurtBox) -> void:
 	if hp <= 0:
 		await effect_animation_player.animation_finished
 		queue_free()
+		var score_data = GameManager.get_final_score()
+		show_score(score_data)
+
+func show_score(data: Dictionary):
+	ending_ui.visible = true
+	time_label.text = "⏱ Time: %d" % data["time_score"]
+	kill_label.text = "💀 Kills: %d" % data["kill_score"]
+	score_label.text = "⭐ Total: %d" % data["total_score"]

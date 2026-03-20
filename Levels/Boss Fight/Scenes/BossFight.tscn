@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bl8rdvcp17dki" path="res://basic caves and dungeons 32x32 standard - v1.0/tiles/tiles-all-32x32.png" id="1_im8ja"]
 [ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="2_sv4pi"]
 [ext_resource type="PackedScene" uid="uid://dy438ivx3eyw5" path="res://Enemies/Wizard Boss/Boss.tscn" id="3_sv4pi"]
-[ext_resource type="PackedScene" uid="uid://37cldwvunf3y" path="res://GeneralNodes/UI/Scenes/deathScreen.tscn" id="4_im8ja"]
-[ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://GeneralNodes/UI/Scenes/timer.tscn" id="5_to8bd"]
+[ext_resource type="Script" uid="uid://c0fotsou4a5cm" path="res://Enemies/Wizard Boss/Scripts/ending_ui.gd" id="4_gsx07"]
+[ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="4_to8bd"]
+[ext_resource type="FontFile" uid="uid://h8qhqmh04soi" path="res://Assets/GrapeSoda.ttf" id="5_im8ja"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to8bd"]
 texture = ExtResource("1_im8ja")
@@ -474,6 +475,21 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_im8ja")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_haxba"]
+radius = 11.011357
+
+[sub_resource type="LabelSettings" id="LabelSettings_haxba"]
+font = ExtResource("5_im8ja")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_to8bd"]
+font = ExtResource("5_im8ja")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_im8ja"]
+font = ExtResource("5_im8ja")
+font_size = 30
+
 [node name="Boss Fight" type="Node2D" unique_id=1335473708]
 
 [node name="baseLayer" type="TileMapLayer" parent="." unique_id=2059710298]
@@ -506,14 +522,51 @@ position = Vector2(590, 475)
 [node name="RightPos" type="Marker2D" parent="." unique_id=103575326]
 position = Vector2(878, 327)
 
-[node name="DeathUI" parent="." unique_id=1964236601 instance=ExtResource("4_im8ja")]
-visible = false
-offset = Vector2(450, 300)
-transform = Transform2D(1, 0, 0, 1, 450, 300)
-
-[node name="Timer" parent="." unique_id=551605206 instance=ExtResource("5_to8bd")]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1499239243]
 
 [node name="MapBounds" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=480564781]
 polygon = PackedVector2Array(261, 513, 261, 97, 925, 97, 925, 514, 262, 513, 38, 807, 1134, 796, 1142, -125, 30, -127, 37, 805)
+
+[node name="Exit" type="Node" parent="." unique_id=1095651582]
+
+[node name="boss_fight_spawn" parent="Exit" unique_id=769291773 instance=ExtResource("4_to8bd")]
+position = Vector2(497, 269)
+scale = Vector2(0.76, 0.76)
+door_tag = "Boss Fight Entrance"
+destination_level_tag = "Cave Level 2 Exit"
+destination_door_tag = "Cave Level 2 Exit"
+
+[node name="Marker2D" type="Marker2D" parent="Exit/boss_fight_spawn" unique_id=697401968]
+position = Vector2(-6, 7)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Exit/boss_fight_spawn" unique_id=1744873747]
+position = Vector2(-1.3157921, 1.1444092e-05)
+shape = SubResource("CircleShape2D_haxba")
+
+[node name="EndingUI" type="CanvasLayer" parent="." unique_id=1635786276]
+visible = false
+script = ExtResource("4_gsx07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndingUI" unique_id=1706015174]
+offset_left = 488.0
+offset_top = 280.0
+offset_right = 715.0
+offset_bottom = 360.0
+size_flags_horizontal = 4
+
+[node name="ScoreLabel" type="Label" parent="EndingUI/VBoxContainer" unique_id=2114088992]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_haxba")
+
+[node name="KillLabel" type="Label" parent="EndingUI/VBoxContainer" unique_id=490746957]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_to8bd")
+
+[node name="TimeLabel" type="Label" parent="EndingUI/VBoxContainer" unique_id=1899344775]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_im8ja")
+
+[node name="MainMenu" type="Button" parent="EndingUI/VBoxContainer" unique_id=631914272]
+layout_mode = 2
+text = "Main Menu
+"

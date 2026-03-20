@@ -38,12 +38,6 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-#func TakeDamage(_damage: int) -> void:
-	#current_health -= _damage
-	#PlayerState.set_health(current_health)
-	#if current_health <= 0:
-		#queue_free()	
-
 func _take_damage(hurt_box : HurtBox) -> void:
 	if invulnerable == true:
 		return
@@ -52,6 +46,10 @@ func _take_damage(hurt_box : HurtBox) -> void:
 	if current_health > 0:
 		player_damaged.emit(hurt_box)
 	else:
+		var tween = create_tween()
+		tween.tween_property(sprite, "rotation", deg_to_rad(90), 0.3)
+		tween.parallel().tween_property(sprite, "modulate:a", 0.0, 0.5)
+		tween.parallel().tween_property(sprite, "position:y", sprite.position.y + 10, 0.3)
 		is_dead = true
 		set_physics_process(false)
 		set_process(false)

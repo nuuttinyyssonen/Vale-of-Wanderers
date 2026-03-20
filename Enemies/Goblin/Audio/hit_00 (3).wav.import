@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvklvttyccjyy"
+path="res://.godot/imported/hit_00 (3).wav-3005e6e08f67d8450a2c5843298ff72e.sample"
+
+[deps]
+
+source_file="res://Enemies/Goblin/Audio/hit_00 (3).wav"
+dest_files=["res://.godot/imported/hit_00 (3).wav-3005e6e08f67d8450a2c5843298ff72e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

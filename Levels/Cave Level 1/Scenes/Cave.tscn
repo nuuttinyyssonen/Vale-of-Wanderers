@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="6_jucdy"]
 [ext_resource type="Texture2D" uid="uid://8w6yyk168jm5" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/assets-all.png" id="7_dvmy6"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="8_6gtk5"]
-[ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://GeneralNodes/UI/Scenes/timer.tscn" id="9_4qbx5"]
-[ext_resource type="PackedScene" uid="uid://37cldwvunf3y" path="res://GeneralNodes/UI/Scenes/deathScreen.tscn" id="10_ic56y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yw2ac"]
 texture = ExtResource("2_dt1wx")
@@ -699,13 +697,6 @@ physics_material_override = SubResource("PhysicsMaterial_yw2ac")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop8" unique_id=1328307652]
 position = Vector2(992, 487.8125)
 shape = SubResource("RectangleShape2D_x6dm6")
-
-[node name="Timer" parent="." unique_id=551605206 instance=ExtResource("9_4qbx5")]
-
-[node name="DeathUI" parent="." unique_id=1964236601 instance=ExtResource("10_ic56y")]
-visible = false
-offset = Vector2(450, 300)
-transform = Transform2D(1, 0, 0, 1, 450, 300)
 
 [editable path="Node/start_entrance"]
 [editable path="Node2/level_2_entrance"]

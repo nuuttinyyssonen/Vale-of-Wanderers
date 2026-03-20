@@ -21,12 +21,6 @@ PlayerState="*uid://cvns3blgflowl"
 PlayerManager="*uid://n6bgbyyqcy5h"
 GameManager="*uid://v0q01jdsbbkm"
 
-[display]
-
-window/size/viewport_width=2560
-window/size/viewport_height=1440
-window/stretch/scale=1.5
-
 [global_group]
 
 player=""

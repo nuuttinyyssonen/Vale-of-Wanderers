@@ -4,13 +4,16 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_l7k4a"]
 font = ExtResource("1_d0h4m")
+font_size = 51
 
 [node name="DeathUI" type="CanvasLayer" unique_id=1964236601]
 
 [node name="Label" type="Label" parent="." unique_id=1743612772]
-offset_left = 391.0
-offset_top = 138.0
-offset_right = 460.0
-offset_bottom = 161.0
+offset_left = 482.0
+offset_top = 281.0
+offset_right = 661.0
+offset_bottom = 333.0
+size_flags_horizontal = 4
 text = "You Died"
 label_settings = SubResource("LabelSettings_l7k4a")
+horizontal_alignment = 1

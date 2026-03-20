@@ -15,18 +15,18 @@ font_size = 25
 [node name="Timer" type="CanvasLayer" unique_id=551605206]
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1489050969]
-offset_left = 1419.0
-offset_top = 47.0
-offset_right = 1459.0
-offset_bottom = 70.0
+offset_left = 930.0
+offset_top = 7.0
+offset_right = 970.0
+offset_bottom = 33.0
 label_settings = SubResource("LabelSettings_ke55t")
 script = ExtResource("1_ke55t")
 
 [node name="EnemiesKilled" type="Label" parent="." unique_id=675461289]
-offset_left = 1421.0
-offset_top = 80.0
-offset_right = 1564.0
-offset_bottom = 106.0
+offset_left = 926.0
+offset_top = 35.0
+offset_right = 1081.0
+offset_bottom = 61.0
 text = "Enemies Killed: "
 label_settings = SubResource("LabelSettings_h115x")
 script = ExtResource("3_eavvk")

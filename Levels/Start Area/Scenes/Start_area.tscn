@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dgcommgd3jio2" path="res://Animals/Scenes/Chicken.tscn" id="13_i3ohi"]
 [ext_resource type="PackedScene" uid="uid://dc6p2exwv1j05" path="res://Props/Plants/plant.tscn" id="14_m1ubd"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="15_evj8f"]
-[ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://GeneralNodes/UI/Scenes/timer.tscn" id="16_0cj8i"]
+[ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://Player/timer.tscn" id="16_0cj8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
 texture = ExtResource("2_a636d")

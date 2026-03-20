@@ -8,6 +8,10 @@ var elapsed_time: float = 0.0
 var timer_running := true
 var enemiesKilled : int = 0
 
+func reset_timer_and_kills() -> void:
+	elapsed_time = 0.0
+	enemiesKilled = 0
+
 func _process(delta: float) -> void:
 	if timer_running:
 		elapsed_time += delta
@@ -42,20 +46,33 @@ func _death_sequence() -> void:
 		return
 
 	# Show UI
-	var death_ui = scene.get_node_or_null("DeathUI")
-	if death_ui:
-		death_ui.visible = true
+	var player = scene.get_node_or_null("Player")
+	if player:
+		var death_ui = player.get_node_or_null("DeathUI")
+		if death_ui:
+			death_ui.visible = true
 
 	# Wait 2 seconds
 	await get_tree().create_timer(5.0).timeout
-	
 	reset_timer() 
 	timer_running = true
-
-	# Change scene safely
 	get_tree().change_scene_to_file(START_SCENE)
-
 	is_respawning = false
+
+func get_final_score() -> Dictionary:
+	var max_time_score := 10000
+	var time_penalty_per_second := 50
+	var kill_value := 100
+
+	var time_score = max(0, max_time_score - int(elapsed_time * time_penalty_per_second))
+	var kill_score = enemiesKilled * kill_value
+	var total_score = time_score + kill_score
+
+	return {
+		"time_score": time_score,
+		"kill_score": kill_score,
+		"total_score": total_score
+	}
 
 
 func spawn_player() -> void:

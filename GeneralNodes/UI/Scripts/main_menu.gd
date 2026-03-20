@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
+	GameManager.reset_timer_and_kills()
 	get_tree().change_scene_to_file("res://Levels/Start Area/Scenes/Start_area.tscn")
 
 
