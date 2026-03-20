@@ -567,6 +567,9 @@ label_settings = SubResource("LabelSettings_to8bd")
 layout_mode = 2
 label_settings = SubResource("LabelSettings_im8ja")
 
+[node name="HighScore" type="Label" parent="EndingUI/VBoxContainer" unique_id=2097544141]
+layout_mode = 2
+
 [node name="MainMenu" type="Button" parent="EndingUI/VBoxContainer" unique_id=631914272]
 layout_mode = 2
 text = "Main Menu

@@ -2,6 +2,7 @@ extends Node
 
 const START_SCENE := "res://Levels/Start Area/Scenes/Start_area.tscn"
 var player_scene := preload("res://Player/Player.tscn")
+const SAVE_PATH := "res://scores"
 
 var is_respawning := false
 var elapsed_time: float = 0.0
@@ -92,3 +93,26 @@ func spawn_player() -> void:
 	var player = player_scene.instantiate()
 	player.global_position = spawn_point.global_position
 	scene.add_child(player)
+
+func load_score() -> Dictionary:
+	if not FileAccess.file_exists(SAVE_PATH):
+		return {}
+
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if file:
+		var content = file.get_as_text()
+		file.close()
+		return JSON.parse_string(content)
+
+	return {}
+
+func save_high_score():
+	var score_data = get_final_score()
+
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(score_data))
+		file.close()
+
+func get_high_score() -> Dictionary:
+	return load_score()

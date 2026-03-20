@@ -19,6 +19,7 @@ extends CharacterBody2D
 @onready var time_label: Label = $"../EndingUI/VBoxContainer/TimeLabel"
 @onready var ending_ui: CanvasLayer = $"../EndingUI"
 @onready var music_player: AudioStreamPlayer2D = $"../MusicPlayer"
+@onready var high_score: Label = $"../EndingUI/VBoxContainer/HighScore"
 
 var player: CharacterBody2D
 var positions: Array[Marker2D] = []
@@ -94,9 +95,12 @@ func _take_damage(hurt_box : HurtBox) -> void:
 		queue_free()
 		var score_data = GameManager.get_final_score()
 		show_score(score_data)
+		GameManager.save_high_score()
 
 func show_score(data: Dictionary):
 	ending_ui.visible = true
+	var high_score = GameManager.get_high_score()
 	time_label.text = "⏱ Time: %d" % data["time_score"]
 	kill_label.text = "💀 Kills: %d" % data["kill_score"]
 	score_label.text = "⭐ Total: %d" % data["total_score"]
+	high_score.text = "Best: %d" % high_score.get("total_score", 0)
