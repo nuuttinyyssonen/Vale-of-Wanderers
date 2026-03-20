@@ -2,7 +2,7 @@ extends Node
 
 const START_SCENE := "res://Levels/Start Area/Scenes/Start_area.tscn"
 var player_scene := preload("res://Player/Player.tscn")
-const SAVE_PATH := "res://scores"
+const SAVE_PATH := "user://scores.json"
 
 var is_respawning := false
 var elapsed_time: float = 0.0
@@ -102,17 +102,23 @@ func load_score() -> Dictionary:
 	if file:
 		var content = file.get_as_text()
 		file.close()
+		print(JSON.parse_string(content))
 		return JSON.parse_string(content)
 
 	return {}
 
-func save_high_score():
-	var score_data = get_final_score()
+func save_high_score() -> void:
+	var new_score: Dictionary = get_final_score()
+	var current_best: float = get_high_score()
 
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(score_data))
-		file.close()
+	if new_score.total_score > current_best:
+		var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+		if file:
+			file.store_string(JSON.stringify(new_score))
+			file.close()
 
-func get_high_score() -> Dictionary:
-	return load_score()
+func get_high_score() -> float:
+	var score = load_score()
+	if score.has("total_score"):
+		return score.total_score
+	return 0

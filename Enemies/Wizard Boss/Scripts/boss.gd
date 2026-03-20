@@ -99,8 +99,8 @@ func _take_damage(hurt_box : HurtBox) -> void:
 
 func show_score(data: Dictionary):
 	ending_ui.visible = true
-	var high_score = GameManager.get_high_score()
+	var best_score = GameManager.get_high_score()
 	time_label.text = "⏱ Time: %d" % data["time_score"]
 	kill_label.text = "💀 Kills: %d" % data["kill_score"]
 	score_label.text = "⭐ Total: %d" % data["total_score"]
-	high_score.text = "Best: %d" % high_score.get("total_score", 0)
+	high_score.text = "High Score: %d" % best_score

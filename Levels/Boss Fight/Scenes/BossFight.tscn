@@ -491,6 +491,10 @@ font_size = 30
 font = ExtResource("5_im8ja")
 font_size = 30
 
+[sub_resource type="LabelSettings" id="LabelSettings_xclgo"]
+font = ExtResource("5_im8ja")
+font_size = 30
+
 [node name="Boss Fight" type="Node2D" unique_id=1335473708]
 
 [node name="baseLayer" type="TileMapLayer" parent="." unique_id=2059710298]
@@ -502,7 +506,7 @@ tile_map_data = PackedByteArray("AAAJABAAAAABAAcAAAAKABAAAAABAAcAAAALABAAAAABAAc
 tile_set = SubResource("TileSet_to8bd")
 
 [node name="Player" parent="." unique_id=1100355087 instance=ExtResource("2_sv4pi")]
-position = Vector2(539, 479)
+position = Vector2(591, 276)
 
 [node name="Boss" parent="." unique_id=1006338385 node_paths=PackedStringArray("up_pos", "left_pos", "down_pos", "right_pos") instance=ExtResource("3_sv4pi")]
 position = Vector2(593, 320)
@@ -531,7 +535,7 @@ polygon = PackedVector2Array(261, 513, 261, 97, 925, 97, 925, 514, 262, 513, 38,
 [node name="Exit" type="Node" parent="." unique_id=1095651582]
 
 [node name="boss_fight_spawn" parent="Exit" unique_id=769291773 instance=ExtResource("4_to8bd")]
-position = Vector2(497, 269)
+position = Vector2(594, 257)
 scale = Vector2(0.76, 0.76)
 door_tag = "Boss Fight Entrance"
 destination_level_tag = "Cave Level 2 Exit"
@@ -541,7 +545,7 @@ destination_door_tag = "Cave Level 2 Exit"
 position = Vector2(-6, 7)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Exit/boss_fight_spawn" unique_id=1744873747]
-position = Vector2(-1.3157921, 1.1444092e-05)
+position = Vector2(-5.263153, 2.6315708)
 shape = SubResource("CircleShape2D_haxba")
 
 [node name="EndingUI" type="CanvasLayer" parent="." unique_id=1635786276]
@@ -569,6 +573,7 @@ label_settings = SubResource("LabelSettings_im8ja")
 
 [node name="HighScore" type="Label" parent="EndingUI/VBoxContainer" unique_id=2097544141]
 layout_mode = 2
+label_settings = SubResource("LabelSettings_xclgo")
 
 [node name="MainMenu" type="Button" parent="EndingUI/VBoxContainer" unique_id=631914272]
 layout_mode = 2
