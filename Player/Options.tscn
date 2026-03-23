@@ -14,10 +14,19 @@ shadow_size = 17
 script = ExtResource("1_8wfms")
 
 [node name="OptionsPanel" type="VBoxContainer" parent="." unique_id=1311343669]
-offset_left = 399.0
-offset_top = 237.0
-offset_right = 756.0
-offset_bottom = 332.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -91.0
+offset_right = 178.5
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="MusicSliderText" type="Label" parent="OptionsPanel" unique_id=633144283]
 layout_mode = 2
@@ -55,5 +64,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_8yxgy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8yxgy")
 text = "Resume"
 
-[connection signal="pressed" from="OptionsPanel/MainMenu" to="OptionsPanel" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="OptionsPanel/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="OptionsPanel/ResumeButton" to="." method="_on_resume_button_pressed"]

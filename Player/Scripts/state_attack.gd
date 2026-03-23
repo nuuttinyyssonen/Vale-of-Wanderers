@@ -6,15 +6,21 @@ class_name State_Attack extends State
 @onready var attack_sound: AudioStreamPlayer2D = $"../../AttackSound"
 @onready var hurt_box: HurtBox = $"../../Interactions/HurtBox"
 @onready var interactions: Node2D = $"../../Interactions"
-
+@onready var hurt_shape : CollisionShape2D = $"../../Interactions/HurtBox/CollisionShape2D"
 var attacking : bool = false
 
 func Enter() -> void:
 	actor.UpdateAnimation("attack")
-	attack_animation.play("attack_" + actor.AnimDirection())
+	var dir = actor.AnimDirection()
+	attack_animation.play("attack_" + dir)
 	
 	attack_sound.pitch_scale = randf_range(0.9, 1.1)
 	attack_sound.play()
+	
+	if dir == "up":
+		hurt_shape.position = Vector2(0, 20)
+	else:
+		hurt_shape.position = Vector2.ZERO
 	
 	hurt_box.monitoring = true
 	

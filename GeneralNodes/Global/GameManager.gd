@@ -37,6 +37,9 @@ func set_enemies_killed() -> void:
 func reset_timer() -> void:
 	elapsed_time = 0.0
 
+func reset_kills() -> void:
+	enemiesKilled = 0
+
 func player_died() -> void:
 	if is_respawning:
 		return
@@ -60,6 +63,7 @@ func _death_sequence() -> void:
 	# Wait 2 seconds
 	await get_tree().create_timer(5.0).timeout
 	reset_timer() 
+	reset_kills()
 	timer_running = true
 	get_tree().change_scene_to_file(START_SCENE)
 	is_respawning = false
@@ -102,7 +106,6 @@ func load_score() -> Dictionary:
 	if file:
 		var content = file.get_as_text()
 		file.close()
-		print(JSON.parse_string(content))
 		return JSON.parse_string(content)
 
 	return {}

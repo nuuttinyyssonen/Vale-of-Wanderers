@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ecpimnqkclwq" path="res://Levels/Cave Level 2/Scripts/gate.gd" id="5_dgf02"]
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="5_e02ih"]
 [ext_resource type="PackedScene" uid="uid://jygsdwjk5577" path="res://Enemies/Goblin/Goblin Enemy.tscn" id="9_1jo41"]
+[ext_resource type="PackedScene" uid="uid://bdvhmh138oawi" path="res://Player/Options.tscn" id="10_a6vxr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5weqc"]
 texture = ExtResource("1_qd0b0")
@@ -2008,5 +2009,8 @@ polygon = PackedVector2Array(541, 510, 541, 411, 636, 412, 638, 378, 669, 377, 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map" unique_id=1657224042]
 polygon = PackedVector2Array(860, 537, 859, 577, 164, 582, 164, 538, 131, 537, 131, 95, 161, 96, 163, 65, 194, 64, 194, -1, 572, -2, 610, -2, 611, -71, 673, -72, 676, -2, 829, 0, 828, 30, 893, 31, 895, 538, 861, 537, 1312, 934, 1345, -353, -320, -345, -334, 982, 997, 979)
+
+[node name="OptionsMenu" parent="." unique_id=1026878104 instance=ExtResource("10_a6vxr")]
+visible = false
 
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]

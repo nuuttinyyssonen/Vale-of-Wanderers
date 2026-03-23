@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="6_jucdy"]
 [ext_resource type="Texture2D" uid="uid://8w6yyk168jm5" path="res://basic caves and dungeons 32x32 standard - v1.0/assets/assets-all.png" id="7_dvmy6"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="8_6gtk5"]
+[ext_resource type="PackedScene" uid="uid://bdvhmh138oawi" path="res://Player/Options.tscn" id="9_4qbx5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yw2ac"]
 texture = ExtResource("2_dt1wx")
@@ -479,9 +480,6 @@ texture = ExtResource("3_vrmid")
 sources/0 = SubResource("TileSetAtlasSource_yw2ac")
 sources/1 = SubResource("TileSetAtlasSource_gsklp")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yw2ac"]
-size = Vector2(30, 17.5)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2ngrw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yw2ac"]
@@ -562,19 +560,6 @@ position = Vector2(462, 564)
 position = Vector2(625, 512)
 
 [node name="PlayerUi" parent="." unique_id=997963239 instance=ExtResource("6_jucdy")]
-
-[node name="Chest" type="StaticBody2D" parent="." unique_id=1345981330]
-position = Vector2(448, 276)
-
-[node name="Sprite2D" type="Sprite2D" parent="Chest" unique_id=1041750701]
-position = Vector2(2, -6)
-texture = ExtResource("7_dvmy6")
-region_enabled = true
-region_rect = Rect2(157.85596, 30.337471, 46.265182, 30.457916)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest" unique_id=1632600798]
-position = Vector2(1, -2)
-shape = SubResource("RectangleShape2D_yw2ac")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1220976034]
 physics_material_override = SubResource("PhysicsMaterial_2ngrw")
@@ -697,6 +682,9 @@ physics_material_override = SubResource("PhysicsMaterial_yw2ac")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop8" unique_id=1328307652]
 position = Vector2(992, 487.8125)
 shape = SubResource("RectangleShape2D_x6dm6")
+
+[node name="OptionsMenu" parent="." unique_id=1026878104 instance=ExtResource("9_4qbx5")]
+visible = false
 
 [editable path="Node/start_entrance"]
 [editable path="Node2/level_2_entrance"]

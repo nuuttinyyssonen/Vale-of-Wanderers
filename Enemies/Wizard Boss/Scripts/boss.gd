@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var left_pos: Marker2D
 @export var down_pos: Marker2D
 @export var right_pos: Marker2D
-@export var hp : int = 3
+@export var hp : int = 25
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

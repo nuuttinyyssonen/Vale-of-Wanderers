@@ -5,7 +5,6 @@ extends CanvasLayer
 @onready var main_menu: Button = $OptionsPanel/MainMenu
 @onready var resume_button: Button = $OptionsPanel/ResumeButton
 
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	visible = false

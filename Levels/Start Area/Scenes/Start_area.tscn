@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://c7lu3dqvdty74" path="res://Player/Player.tscn" id="11_44g6a"]
 [ext_resource type="PackedScene" uid="uid://bh6orqb7i62iv" path="res://Player/PlayerUI.tscn" id="12_w33e7"]
 [ext_resource type="PackedScene" uid="uid://dgcommgd3jio2" path="res://Animals/Scenes/Chicken.tscn" id="13_i3ohi"]
-[ext_resource type="PackedScene" uid="uid://dc6p2exwv1j05" path="res://Props/Plants/plant.tscn" id="14_m1ubd"]
 [ext_resource type="PackedScene" uid="uid://dhmsyjpgopjan" path="res://GeneralNodes/Doors/Scenes/Door.tscn" id="15_evj8f"]
 [ext_resource type="PackedScene" uid="uid://cqdku0qadsguo" path="res://Player/timer.tscn" id="16_0cj8i"]
 [ext_resource type="PackedScene" uid="uid://bdvhmh138oawi" path="res://Player/Options.tscn" id="17_c6qhe"]
@@ -596,15 +595,6 @@ position = Vector2(-232, -22)
 
 [node name="Chicken2" parent="." unique_id=1261387101 instance=ExtResource("13_i3ohi")]
 position = Vector2(-311, 105)
-
-[node name="Plant" parent="." unique_id=613631132 instance=ExtResource("14_m1ubd")]
-position = Vector2(-14, 51)
-
-[node name="Plant2" parent="." unique_id=271447411 instance=ExtResource("14_m1ubd")]
-position = Vector2(60, 71)
-
-[node name="Plant3" parent="." unique_id=345566136 instance=ExtResource("14_m1ubd")]
-position = Vector2(-58, 104)
 
 [node name="Chicken3" parent="." unique_id=463526877 instance=ExtResource("13_i3ohi")]
 position = Vector2(-358, -130)
